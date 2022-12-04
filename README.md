@@ -2,7 +2,7 @@
 
 ## About The Project
 Sebagaimana yang kita ketahui, organisasi kemahasiswaan memiliki suatu birokrasi dalam melakukan korespondensi, pengelolaan keuangan, publikasi, dan administrasi internal lainnya untuk mendukung berjalannya organisasi. Sejauh ini, kami merasa organisasi di Fasilkom masih belum memanfaatkan digitalisasi dalam pelaksanaan berbagai birokrasi yang ada. Sebagai contoh, proses permintaan surat menyurat yang masih melalui email atau Google Form sehingga pemohon tidak bisa melakukan tracking terhadap surat yang diminta. Hal yang sama juga terjadi pada birokrasi yang lainnya seperti birokrasi publikasi dan birokrasi permohonan dana.
-<br>
+<br> <br>
 Berangkat dari permasalahan tersebut, kami merasa diperlukannya suatu sistem informasi yang dapat mengoptimalisasi berbagai birokrasi yang ada melalui sistem yang terintegrasi. Harapannya, dengan adanya sistem informasi terintegrasi bisa menciptakan sistem kerja yang efisien. Oleh karena itu, kami menginisiasi sebuah sistem informasi terintegrasi yang terdiri atas beberapa sistem informasi dari berbagai birokrasi yang ada dalam satu aplikasi. Sistem ini mencakup sistem informasi publikasi, surat menyurat, keuangan, permintaan survei, dan lain lain. Sistem ini lebih efektif dari sistem sebelumnya karena hanya membutuhkan satu platform  saja untuk dapat menjalankan berbagai sistem lainnya.
 
 ## Developers:
