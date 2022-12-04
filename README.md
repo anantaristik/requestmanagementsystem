@@ -1,7 +1,11 @@
-![logo](https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-no-bg.png)
+<div align="center">
+  <a href="[https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-no-bg.png]">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    
 <h1 align="center">Request Management System</h1>
 <h3 align="center">Aki Runcoko</h3>
-
+    </div>
+  
 ## About The Project
 Sebagaimana yang kita ketahui, organisasi kemahasiswaan memiliki suatu birokrasi dalam melakukan korespondensi, pengelolaan keuangan, publikasi, dan administrasi internal lainnya untuk mendukung berjalannya organisasi. Sejauh ini, kami merasa organisasi di Fasilkom masih belum memanfaatkan digitalisasi dalam pelaksanaan berbagai birokrasi yang ada. Sebagai contoh, proses permintaan surat menyurat yang masih melalui email atau Google Form sehingga pemohon tidak bisa melakukan tracking terhadap surat yang diminta. Hal yang sama juga terjadi pada birokrasi yang lainnya seperti birokrasi publikasi dan birokrasi permohonan dana.
 <br> <br>
