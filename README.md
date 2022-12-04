@@ -1,4 +1,5 @@
 <h1 align="center">Request Management System</h1>
+<h3 align="center">Aki Runcoko</h3>
 
 ## About The Project
 Sebagaimana yang kita ketahui, organisasi kemahasiswaan memiliki suatu birokrasi dalam melakukan korespondensi, pengelolaan keuangan, publikasi, dan administrasi internal lainnya untuk mendukung berjalannya organisasi. Sejauh ini, kami merasa organisasi di Fasilkom masih belum memanfaatkan digitalisasi dalam pelaksanaan berbagai birokrasi yang ada. Sebagai contoh, proses permintaan surat menyurat yang masih melalui email atau Google Form sehingga pemohon tidak bisa melakukan tracking terhadap surat yang diminta. Hal yang sama juga terjadi pada birokrasi yang lainnya seperti birokrasi publikasi dan birokrasi permohonan dana.
@@ -15,25 +16,25 @@ Berangkat dari permasalahan tersebut, kami merasa diperlukannya suatu sistem inf
 
 ## System Requirements
 ### Fitur:
-### Permohonan Surat menyurat
+### Permohonan Surat menyurat ✉️
 Permohonan surat merupakan fitur yang disediakan oleh RSM untuk mempermudah pemohon dalam melakukan permohonan surat menyurat, serta mempermudah bagi para pengurus surat dalam melakukan tracking terhadap permintaan-permintaan yang ada.
 
-### Permohonan Dana
+### Permohonan Dana 💵
 Permohonan dana merupakan fitur yang disediakan oleh RSM untuk mempermudah pemohon dalam melakukan permohonan dana, serta mempermudah bagi para pengurus dana dalam melakukan tracking terhadap permintaan-permintaan yang ada. Fitur ini tidak mendukung penarikan dana via sistem. Fitur ini hanya untuk pelaporan dan permohonan dana, sementara penarikan dana dilakukan secara manual diluar sistem.
 
-### Permohonan Publikasi
+### Permohonan Publikasi 📢
 Permohonan publikasi merupakan fitur yang disediakan oleh RSM untuk mempermudah pemohon dalam melakukan permohonan publikasi di kanal media organisasi yang ada, serta mempermudah bagi para pengurus publikasi dalam melakukan tracking terhadap permintaan-permintaan yang ada.
 
-### Dashboard Pemohon
+### Dashboard Pemohon 👥
 Pada dashboard pemohon berisi daftar permintaan yang dilakukan oleh pemohon, sehingga pemohon dapat melakukan tracking terhadap progress dari permintaan yang sudah diajukan.
 
-### Dashboard Pengurus
+### Dashboard Pengurus 👷🏻‍♀️
 Pada dashboard pengurus berisi daftar permintaan dari seluruh permintaan yang masuk. Sehingga pengurus dari masing-masing permintaan bisa melakukan tracking terhadap seluruh permintaan yang ada.
 
-### Autentikasi
+### Autentikasi 👤
 Untuk melakukan permohonan dan juga pengelolaan alur permohonan, user harus login dan ter-autentikasi oleh sistem. Jika tidak terautentikasi, maka user tidak bisa menggunakan keseluruhan fitur yang ada pada sistem (semua fitur hanya bisa digunakan oleh user yang terautentikasi).
 
-## Role
+## Role 🎭
 ### Super Admin
 Super admin merupakan user super dimana user ini memiliki kuasa atas seluruh data dan alur yang ada pada sistem.
 
