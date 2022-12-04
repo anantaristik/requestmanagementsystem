@@ -1,4 +1,4 @@
-<h3 align="center">Request Management System</h3>
+<h1 align="center">Request Management System</h1>
 
 ## About The Project
 Sebagaimana yang kita ketahui, organisasi kemahasiswaan memiliki suatu birokrasi dalam melakukan korespondensi, pengelolaan keuangan, publikasi, dan administrasi internal lainnya untuk mendukung berjalannya organisasi. Sejauh ini, kami merasa organisasi di Fasilkom masih belum memanfaatkan digitalisasi dalam pelaksanaan berbagai birokrasi yang ada. Sebagai contoh, proses permintaan surat menyurat yang masih melalui email atau Google Form sehingga pemohon tidak bisa melakukan tracking terhadap surat yang diminta. Hal yang sama juga terjadi pada birokrasi yang lainnya seperti birokrasi publikasi dan birokrasi permohonan dana.
@@ -22,9 +22,9 @@ Pada dashboard pemohon berisi daftar permintaan yang dilakukan oleh pemohon, seh
 Pada dashboard pengurus berisi daftar permintaan dari seluruh permintaan yang masuk. Sehingga pengurus dari masing-masing permintaan bisa melakukan tracking terhadap seluruh permintaan yang ada.
 
 ### Autentikasi
-	Untuk melakukan permohonan dan juga pengelolaan alur permohonan, user harus login dan ter-autentikasi oleh sistem. Jika tidak terautentikasi, maka user tidak bisa menggunakan keseluruhan fitur yang ada pada sistem (semua fitur hanya bisa digunakan oleh user yang terautentikasi).
+Untuk melakukan permohonan dan juga pengelolaan alur permohonan, user harus login dan ter-autentikasi oleh sistem. Jika tidak terautentikasi, maka user tidak bisa menggunakan keseluruhan fitur yang ada pada sistem (semua fitur hanya bisa digunakan oleh user yang terautentikasi).
 
-### Role
+## Role
 ### Super Admin
 Super admin merupakan user super dimana user ini memiliki kuasa atas seluruh data dan alur yang ada pada sistem.
 
