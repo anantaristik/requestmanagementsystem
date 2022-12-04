@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-no-bg.png">
-    <img src="https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-no-bg.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-white-bg.png">
+    <img src="https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-white-bg.png" alt="Logo" width="80" height="80">
     
 <h1 align="center">Request Management System</h1>
 <h3 align="center">Aki Runcoko</h3>
