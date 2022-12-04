@@ -1,4 +1,4 @@
-![plot](requestmanagementsystem/static/base/img/rms-logo-white-bg.png)
+![logo](https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-no-bg.png)
 <h1 align="center">Request Management System</h1>
 <h3 align="center">Aki Runcoko</h3>
 
