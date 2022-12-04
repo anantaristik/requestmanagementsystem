@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore, storage
 from backend.misc import firebase_init
+from .crud_user import user_read
 import datetime
 import pytz
 
@@ -17,13 +18,24 @@ fauth = firebase_init
 db = firestore.client()
 ds = storage.bucket()
 
-
 # --------------------------
 # CRUD Functions Surat
 # --------------------------
 
-def create(id_pemohon, judul, nama_kegiatan, id_feedback, deskripsi, tipe_surat, link, insidental):
+# --------------------------
+# Create
+# --------------------------
+
+def create(request, judul, nama_kegiatan, id_feedback, deskripsi, tipe_surat, link, insidental):
     try:
+        print(request.session['uid'])
+        user_data = fauth.get_account_info(request.session['uid'])
+    
+        uname = user_data['user'][0]['localId']
+        user_data = user_read(uname)['id']
+
+        id_pemohon = user_data
+
         id_permohonan_sr = "sr-" + nama_kegiatan.replace(" ", "-").lower()
         data = {
             'idPermintaan': id_permohonan_sr,
@@ -48,7 +60,11 @@ def create(id_pemohon, judul, nama_kegiatan, id_feedback, deskripsi, tipe_surat,
     except:
         return "terjadi error"
 
-def reimbursement_read(id_permohonan_rb):
+# --------------------------
+# Read
+# --------------------------
+
+def surat_read(id_permohonan_rb):
     data = db.collection('InformasiPermohonan').document('surat')
     data.collection('PermohonanSurat').document(id_permohonan_rb).get().to_dict()
     print(data)
@@ -70,7 +86,7 @@ def surat_read_all(tahap):
         data_dict = []
     return data_dict
 
-def reimbursement_read_all_line():
+def surat_read_all_line():
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('surat')
@@ -81,3 +97,20 @@ def reimbursement_read_all_line():
     except:
         data_dict = []
     return data_dict
+
+# --------------------------
+# Update
+# --------------------------
+def reimbursement_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, insidental):
+    try:
+        data = db.collection('InformasiPermohonan').document('surat')
+        data.collection('PermohonanSurat').document(id_permohonan_rb).update({
+            'nama_kegiatan': nama_kegiatan,
+            'deskripsi_kegiatan': deskripsi_kegiatan,
+            'jumlah_dana': jumlah_dana,
+            'insidental': insidental,
+    })
+        return ""
+    except:
+        return "error"
+
