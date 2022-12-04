@@ -19,7 +19,7 @@ ds = storage.bucket()
 
 
 # --------------------------
-# CRUD Functions Surat Besar
+# CRUD Functions Surat
 # --------------------------
 
 def create(id_pemohon, judul, nama_kegiatan, id_feedback, deskripsi, tipe_surat, link, insidental):
@@ -81,5 +81,3 @@ def reimbursement_read_all_line():
     except:
         data_dict = []
     return data_dict
-
-
