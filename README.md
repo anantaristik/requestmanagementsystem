@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-white-bg.png">
+  <a href="https://requestmanagementsystem-production.up.railway.app/">
     <img src="https://github.com/anantaristik/requestmanagementsystem/blob/master/static/base/img/rms-logo-white-bg.png" alt="Logo" width="80" height="80">
     
 <h1 align="center">Request Management System</h1>
