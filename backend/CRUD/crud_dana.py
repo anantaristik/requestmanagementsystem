@@ -21,12 +21,14 @@ ds = storage.bucket()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def reimbursement_create(request, nama_kegiatan, id_permohonan_rb, deskripsi_kegiatan, id_feedback, id_pemohon, jumlah_dana, insidental):
+def reimbursement_create(request, nama_kegiatan, id_permohonan_rb, deskripsi_kegiatan, id_feedback, jumlah_dana, insidental):
     print(request.session['uid'])
     user_data = fauth.get_account_info(request.session['uid'])
     
-    uname = user_data['user'][0]['id']
-    user_data = user_read(uname)
+    uname = user_data['user'][0]['localId']
+    user_data = user_read(uname)['id']
+
+    id_pemohon = user_data
 
     id_permohonan_rb = "rb-" + nama_kegiatan.replace(" ", "-").lower()
 
@@ -99,3 +101,14 @@ def reimbursement_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, ju
         return ""
     except:
         return "error"
+
+# --------------------------
+# Delete
+# --------------------------
+def reimbursement_delete(id_permohonan_rb):
+    try:
+        data = db.collection('InformasiPermohonan').document('keuangan')
+        data.collection('permohonanReimburse').document(id_permohonan_rb).delete()
+        return data
+    except:
+        return
