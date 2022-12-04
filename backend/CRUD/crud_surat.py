@@ -54,4 +54,32 @@ def reimbursement_read(id_permohonan_rb):
     print(data)
     return data
 
+def surat_read_all(tahap):
+    try:
+        data_dict = []
+        if tahap == 'semua':
+            datas = db.collection('InformasiPermohonan').document('surat')
+            data.collection('PermohonanSurat').where('tahapan', '!=', 3).get()
+        else:
+            datas = db.collection('InformasiPermohonan').document('surat')
+            data.collection('PermohonanSurat').where('tahapan', '==', int(tahap)).get()
+        for data in datas:
+            data_dict.append(data.to_dict())
+        return data_dict
+    except:
+        data_dict = []
+    return data_dict
+
+def reimbursement_read_all_line():
+    try:
+        data_dict = []
+        datas = db.collection('InformasiPermohonan').document('surat')
+        data.collection('PermohonanSurat').order_by('waktu_pengajuan').limit(10).get()
+        for data in datas:
+            data_dict.append(data.to_dict())
+        return data_dict
+    except:
+        data_dict = []
+    return data_dict
+
 
