@@ -39,7 +39,7 @@ def user_create(uname, email, password, divisi, nama, role):
         'role': role,
     }
     db.collection('user').document(uname).set(data)
-    return "";
+    return ""
 
 def user_read(uname):
     data = db.collection('user').document(uname).get().to_dict()
