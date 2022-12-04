@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = "AIzaSyDb6ZhbaZhtqLSkGy7Sme3te2ODY6mI22w"
+API_KEY = "AIzaSyAP310EiPKS2V14UoIu5gYWu8033u-SBdU"
 
 def sign_in_with_email_and_password(email, password):
     url_signin = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+API_KEY
