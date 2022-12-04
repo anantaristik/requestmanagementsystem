@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore, storage
 from backend.misc import firebase_init
+from .crud_user import user_read
 import datetime
 import pytz
 
@@ -20,7 +21,13 @@ ds = storage.bucket()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def reimbursement_create(nama_kegiatan, id_permohonan_rb, deskripsi_kegiatan, id_feedback, id_pemohon, jumlah_dana, insidental):
+def reimbursement_create(request, nama_kegiatan, id_permohonan_rb, deskripsi_kegiatan, id_feedback, id_pemohon, jumlah_dana, insidental):
+    print(request.session['uid'])
+    user_data = fauth.get_account_info(request.session['uid'])
+    
+    uname = user_data['user'][0]['id']
+    user_data = user_read(uname)
+
     id_permohonan_rb = "rb-" + nama_kegiatan.replace(" ", "-").lower()
 
     data = {
@@ -76,3 +83,19 @@ def reimbursement_read_all_line():
     except:
         data_dict = []
     return data_dict
+
+# --------------------------
+# Update
+# --------------------------
+def reimbursement_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, insidental):
+    try:
+        data = db.collection('InformasiPermohonan').document('keuangan')
+        data.collection('permohonanReimburse').document(id_permohonan_rb).update({
+            'nama_kegiatan': nama_kegiatan,
+            'deskripsi_kegiatan': deskripsi_kegiatan,
+            'jumlah_dana': jumlah_dana,
+            'insidental': insidental,
+    })
+        return ""
+    except:
+        return "error"
