@@ -15,12 +15,12 @@
 
 <body>
 	<header {% if '/' == request.path %}class="header-transparent"{% else %}class="header-white"{% endif %}>
-        <a href="" class="logo"><img src="{% static 'base/img/rms-logo-no-bg.png' %}" style="width:3.5rem; height:3.5rem;"></a>
+        <a href="{% url 'home:home' %}" class="logo"><img src="{% static 'base/img/rms-logo-no-bg.png' %}" style="width:3.5rem; height:3.5rem;"></a>
         <input type="checkbox" class="nav-toggle" id="nav-toggle">
 
         <nav>
             <ul>
-                <li><a href="">Keuangan</a></li>
+                <li><a href="{% url 'home:keuangan' %}">Keuangan</a></li>
                 <li><a href="">Publikasi</a></li>
                 <li><a href="">Surat</a></li>
 {#                <li><a href="">Survei</a></li>#}
@@ -71,7 +71,7 @@
                     <svg width="24" height="24" viewBox="0 0 24 24">
                         <use href="{% static 'base/svg/base-sprite-sheet.svg' %}#copyright-logo"></use>
                     </svg>
-                    @ 2022 - Badan Eksekutif Mahasiswa UI - Biro Multimedia
+                    @ 2022 - Aki Runcoko - RPL B
                 </p>
             </div>
         </div>
