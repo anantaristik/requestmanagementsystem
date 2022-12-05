@@ -4,7 +4,7 @@
 .home-top {
 	width: 90vw;
 
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
 	display: flex;
     justify-content: center;
 
@@ -28,7 +28,7 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	color: #1C5188;
+	color: #6C5F8D;
 }
 
 .home-top > div > div > h1 {
@@ -43,7 +43,7 @@
 
 .home-middle {
 	padding: 5em 1em;
-	color: #1C5188;
+	color: #6C5F8D;
 }
 
 .home-middle h2,
@@ -196,7 +196,7 @@
 
 	.home-middle {
 		padding: 3em;
-		color: #1C5188;
+		color: #6C5F8D;
 	}
 
 

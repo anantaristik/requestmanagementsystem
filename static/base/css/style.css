@@ -5,29 +5,29 @@
 :root {
     --background-nav: transparent;
     --nav-dropdown: #FFFFFF;
-    --nav-color: #144B84;
-    --background-footer: #2D2F43;
+    --nav-color: #6C5F8D;
+    --background-footer: #3F345C;
 
-    --button-color: #144B84;
+    --button-color: #6C5F8D;
     --button-black: #000000;
-    --button-red: #EC4E43;
-    --button-red-bg: #EC4E43;
+    --button-red: #8A5283;
+    --button-red-bg: #8A5283;
     --button-red-color: #FFFFFF;
     --button-gray: #999999;
     --button-light-bg: #E2E7EE;
-    --button-light-color: #144B84;
+    --button-light-color: #6C5F8D;
 
-    --primary-blue: #2D2F43;
-    --primary-yellow: #FF725E;
+    --primary-blue: #6C5F8D;
+    --primary-yellow: #FF7B89;
     --success-color: #3FAF67;
-    --error-color: #EC4E43;
+    --error-color: #8A5283;
     --accent-light-blue: #F1F7FF;
     --accent-base-blue: #E2E7EE;
     --accent-blue-80: #3C6896;
     --accent-dark-red: #CA4238;
     --neutral-gray: #EBEBEB;
 
-    --required-asterisk: #EC4E43;
+    --required-asterisk: #8A5283;
     --text-color: #EBEBEB;
 }
 
@@ -523,7 +523,7 @@ label a.button {
     margin: 0.5em 0 0.5em 0;
     color: white;
 	background-color: var(--primary-yellow);
-  	box-shadow: 0 2px 10px rgb(0 0 0 / 0.9);
+  	box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
     border-radius: 0.5em;
     cursor: pointer;
     user-select: none;
@@ -560,7 +560,7 @@ label a.button {
 }
 
 .button:hover{
-	background-color: #9e2f20;
+	background-color: #6C5F8D;
 	animation-timing-function: ease-in;
 	animation-duration: 2s;
   	box-shadow: 0 2px 10px rgb(0 0 0 / 0.9);
