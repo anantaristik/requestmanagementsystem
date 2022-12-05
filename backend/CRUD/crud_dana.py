@@ -21,7 +21,7 @@ ds = storage.bucket()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def reimbursement_create(request, nama_kegiatan, id_permohonan_rb, deskripsi_kegiatan, id_feedback, jumlah_dana, insidental):
+def reimbursement_create(request, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, nomor_rekening, atas_nama_rekening, nama_bank, bukti_pembayaran):
     print(request.session['uid'])
     user_data = fauth.get_account_info(request.session['uid'])
     
@@ -36,10 +36,14 @@ def reimbursement_create(request, nama_kegiatan, id_permohonan_rb, deskripsi_keg
         'id_permohonan_rb': id_permohonan_rb,
         'nama_kegiatan': nama_kegiatan,
         'deskripsi_kegiatan': deskripsi_kegiatan,
-        'id_feedback': id_feedback,
+        'id_feedback': "",
         'id_pemohon': id_pemohon,
         'jumlah_dana': jumlah_dana,
-        'insidental': insidental,
+        'nomor_rekening':nomor_rekening,
+        'atas_nama_rekening':atas_nama_rekening,
+        'nama_bank':nama_bank,
+        'bukti_transaksi':[],
+        'bukti_pembayaran':bukti_pembayaran,
         'waktu_permintaan': datetime.datetime.now(pytz.timezone('Asia/Jakarta'))
     }
 
