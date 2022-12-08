@@ -16,7 +16,7 @@
 					<h1>Get your task done<br>By using RMS</h1>
 					<p>Permudah segala urusanmu dengan Request Management System</p>
 					{% if not request.session.uid %}
-					<a href="" class="button fit-content">Login Now!</a>
+					<a href="{% url 'user:login' %}" class="button fit-content">Login Now!</a>
 					{% endif %}
 				</div>
 				<object class="only-desktop" data="{% static 'main/svg/Scrum-board-pana.svg' %}" type="image/svg+xml"></object>
