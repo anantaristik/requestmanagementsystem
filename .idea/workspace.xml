@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d1455e1b-d408-48b2-9778-41ee9dff0d5f" name="Changes" comment="" />
+    <list default="true" id="d1455e1b-d408-48b2-9778-41ee9dff0d5f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dashpengurus/templates/dashboard_pengurus.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashpengurus/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,13 +37,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/mikas.rahwono/DEV/akademis/requestmanagementsystem",
+    "last_opened_file_path": "/Users/mikas.rahwono/DEV/akademis/requestmanagementsystem/dashpengurus/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dashpengurus/templates" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="requestmanagementsystem" type="Python.DjangoServer" factoryName="Django server">
       <module name="requestmanagementsystem" />
@@ -73,11 +82,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670124050016</updated>
-      <workItem from="1670124052013" duration="4884000" />
+      <workItem from="1670124052013" duration="5562000" />
+      <workItem from="1670560692725" duration="1448000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
