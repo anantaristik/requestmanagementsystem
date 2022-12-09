@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1455e1b-d408-48b2-9778-41ee9dff0d5f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dashpengurus/templates/dashboard_pengurus.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashpengurus/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670124050016</updated>
       <workItem from="1670124052013" duration="5562000" />
-      <workItem from="1670560692725" duration="1448000" />
+      <workItem from="1670560692725" duration="2112000" />
     </task>
     <servers />
   </component>
