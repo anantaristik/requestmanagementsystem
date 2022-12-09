@@ -11,7 +11,7 @@
         <div class="form-root">
             <h1 id="judul-form">Form Pengajuan Surat Menyurat</h1>
             <section>
-                <form action="postformsk" method="post" id="form">
+                <form action="postformpublikasi" method="post" id="form">
                     {% csrf_token %}
                     <label for="judul_konten" >judul konten</label>
                     <input type="text" id="judul_konten" name="judul_konten" placeholder="Judul konten..."> <br/>
@@ -34,14 +34,13 @@
                         <input type="text" id="bukti" name="bukti" placeholder="Bukti Insidental..."><br/>
                     </div>
 
-                    <button class="button" type="submit" value="PostFormSk">Ajukan</button>
+                    <button class="button" type="submit" value="postformpublikasi">Ajukan</button>
                 </form>
             </section>
         </div>
         <object class="object only-desktop" data="{% static 'surat/svg/Envelope-pana.svg' %}" type="image/svg+xml"></object>
     </div>
 
-    <script type="application/javascript" src="{% static 'surat/js/dropdown-surat.js' %}"></script>
     <script>
         $('select option:first-child').attr("selected", "selected");
     </script>

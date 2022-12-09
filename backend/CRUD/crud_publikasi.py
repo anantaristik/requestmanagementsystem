@@ -30,11 +30,11 @@ def publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kan
     try:
         print(request.session['uid'])
         user_data = fauth.get_account_info(request.session['uid'])
-    
-        uname = user_data['user'][0]['localId']
+
+        uname = user_data['users'][0]['localId']
         user_data = user_read(uname)['id']
 
-        id_pemohon = "user_data"
+        id_pemohon = user_data
 
         id_permohonan_pb = "pb-" + judul_konten.replace(" ", "-").lower()
         data = {
@@ -53,7 +53,7 @@ def publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kan
         collections = db.collection('InformasiPermohonan').document('publikasi')
 
         collections.collection('permohonanPublikasi').document(id_permohonan_pb).set(data)
-    
+        
         return id_permohonan_pb
 
     except:
@@ -65,7 +65,7 @@ def publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kan
 
 def publikasi_read(id_permohonan_rb):
     data = db.collection('InformasiPermohonan').document('publikasi')
-    data.collection('permohonanPublikasi').document(id_permohonan_rb).get().to_dict()
+    data = data.collection('permohonanPublikasi').document(id_permohonan_rb).get().to_dict()
     print(data)
     return data
 

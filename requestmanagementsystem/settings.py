@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'backend',
     'reimbursement',
     'user',
+    'publikasi',
+    'surat'
 ]
 
 MIDDLEWARE = [

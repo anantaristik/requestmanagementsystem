@@ -16,7 +16,9 @@ fauth = firebase_init
 def formPublikasi(request):
     try:
         if (request.session['uid']):
+            print(1)
             if (fauth.get_account_info(request.session['uid'])):
+                print(2)
                 return render(request, 'form_publikasi.html')
             else:
                 return redirect("/user/logout")
@@ -34,12 +36,11 @@ def postFormPublikasi(request):
     
     if (insidental == "True"):
         insidental = True
-        bukti = request.POST.get("bukti")
     else:
         insidental = False
         bukti = ""
 
-    message = publikasi_create(judul_konten, id_feedback, deskripsi_kegiatan, kanal_publikasi, link, insidental)
+    message = publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kanal_publikasi, link, insidental)
     print(message)
     if message != "terjadi error":
         return redirect("/publikasi/detail/" + message)
@@ -53,12 +54,21 @@ def postFormPublikasi(request):
 def detail(request, id):
     try:
         if (request.session['uid']):
+            print(1)
             user_session = fauth.get_account_info(request.session['uid'])
+            print(1)
             if (user_session):
+                print(1)
                 data_detail = publikasi_read(id)
+                print(1)
                 user = user_read(user_session['users'][0]['localId'])
+                print(1)
+                print(user)
                 if (data_detail != []):
+                    print(1)
+                    print(data_detail)
                     if (user["id"] == data_detail["idPemohon"] or "publikasi" in user["admin"]):
+                        print(1)
                         # Get Dokumen Files
                         if ("publikasi" in user["admin"]):
                             admin = "true"
