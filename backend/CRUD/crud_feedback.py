@@ -25,7 +25,7 @@ ds = storage.bucket()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def fb_create(request, id_permohonan, status, komentar, berkas, id_pengurus):
+def fb_create(request, id_permohonan, status, komentar, berkas, id_pengurus, jenis_permohonan):
     try:
         print(request.session['uid'])
         # user_data = fauth.get_account_info(request.session['uid'])
@@ -44,6 +44,9 @@ def fb_create(request, id_permohonan, status, komentar, berkas, id_pengurus):
         }
         db.collection('feedback').document(id_feedback).set(data)
 
+        data = db.collection(jenis_permohonan).document(id_permohonan).get().to_dict()
+        data['id_feedback'] = id_feedback
+        db.collection(jenis_permohonan).document(id_permohonan).set(data)
         return id_feedback
     except:
         return "terjadi error"
