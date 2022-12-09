@@ -13,26 +13,18 @@
 # 				tahapan = []
 # 				judul = "Home Dashboard"
 # 				if user["admin"]:
-# 					if category == 'reimbursement' and 'keuangan' in user['admin']:
+# 					if category == 'dana' and 'dana' in user['admin']:
 # 						data = kr_read_all(sort)
-# 						judul = "Keuangan - Reimbursement"
-# 						tahapan = tahap_reimbursement
-# 					elif category == "advanced" and 'keuangan' in user['admin']:
-# 						data = ka_read_all(sort)
-# 						judul = "Keuangan - Cash Advanced"
-# 						tahapan = tahap_advanced
-# 					elif category == "penyetoran" and 'keuangan' in user['admin']:
-# 						data = ks_read_all(sort)
-# 						judul = "Keuangan - Penyetoran"
-# 						tahapan = tahap_penyetoran
-# 					elif category == "surat_keluar" and 'surat' in user['admin']:
+# 						judul = "Dana"
+# 						tahapan = tahap_dana
+# 					elif category == "surat" and 'surat' in user['admin']:
 # 						data = sk_read_all(sort)
-# 						judul = "Surat Menyurat - Surat"
-# 						tahapan = tahap_surat_keluar
-# 					elif category == "surat_besar" and 'surat' in user['admin']:
+# 						judul = "Surat Menyurat"
+# 						tahapan = tahap_surat
+# 					elif category == "publikasi" and 'publikasi' in user['admin']:
 # 						data = sb_read_all(sort)
-# 						judul = "Dokumen - Surat"
-# 						tahapan = tahap_surat_besar
+# 						judul = "Publikasi"
+# 						tahapan = tahap_publikasi
 # 					hostname = request.build_absolute_uri("/")
 # 					print(request.get_full_path)
 #

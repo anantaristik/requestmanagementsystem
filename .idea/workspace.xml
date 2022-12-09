@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1455e1b-d408-48b2-9778-41ee9dff0d5f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dashpengurus/static/dashpengurus/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashpengurus/templates/dashboard_pengurus.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashpengurus/templates/dashboard_pengurus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashpengurus/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashpengurus/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashpengurus/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashpengurus/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/mikas.rahwono/DEV/akademis/requestmanagementsystem/dashpengurus/templates",
+    "last_opened_file_path": "/Users/mikas.rahwono/DEV/akademis/requestmanagementsystem/dashpengurus/static/css",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -44,7 +48,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dashpengurus/static/css" />
       <recent name="$PROJECT_DIR$/dashpengurus/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dashpengurus/static/dashpengurus" />
     </key>
   </component>
   <component name="RunManager">
