@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'home',
     'backend',
     'reimbursement',
+    'user',
 ]
 
 MIDDLEWARE = [

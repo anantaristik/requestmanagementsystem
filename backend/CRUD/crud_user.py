@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore, storage, auth
 from backend.misc import firebase_init
+import sys
 
 # --------------------------
 # Initialize Firebase Admin
@@ -25,12 +26,15 @@ def user_create(uname, email, password, divisi, nama, role):
         user = auth.create_user(
             uid=uname ,email=email, email_verified=False, password=password)
         print('Sucessfully created new user: {0}'.format(user.uid))
+        # fauth.send_email_verification_link(user.uid)
     except auth.EmailAlreadyExistsError:
         message = 'The user with the provided email already exists'
         return message;
     except auth.UidAlreadyExistsError:
         message = 'The user with the provided username already exists'
         return message;
+    except :
+        return sys.exc_info()[0]
     data = {
         'id': uname,
         'email': email,
