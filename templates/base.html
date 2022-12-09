@@ -21,7 +21,7 @@
         <nav>
             <ul>
                 <li><a href="{% url 'home:keuangan' %}">Keuangan</a></li>
-                <li><a href="">Publikasi</a></li>
+                <li><a href="{% url 'home:publikasi' %}">Publikasi</a></li>
                 <li><a href="{% url 'home:surat' %}">Surat</a></li>
 {#                <li><a href="">Survei</a></li>#}
                 {% if request.session.admin %}

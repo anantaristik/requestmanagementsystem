@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Form Surat Menyurat</title>
+    <link rel="stylesheet" href="{% static 'surat/css/style.css' %}"/>
+{% endblock meta %}
+
+{% block content %}
+    <div class="content-root">
+        <div class="form-root">
+            <h1 id="judul-form">Form Pengajuan Surat Menyurat</h1>
+            <section>
+                <form action="postformpublikasi" method="post" id="form">
+                    {% csrf_token %}
+                    <label for="judul_konten" >judul konten</label>
+                    <input type="text" id="judul_konten" name="judul_konten" placeholder="Judul konten..."> <br/>
+
+                    <label for="deskripsi_kegiatan" >Deskripsi Kegiatan</label>
+                    <input type="text" id="deskripsi_kegiatan" name="deskripsi_kegiatan" placeholder="Deskripsi Kegiatan..."><br/>
+
+                    <label for="kanal_publikasi">Kanal Publikasi</label>
+                    <input type="text" id="kanal_publikasi" name="kanal_publikasi" placeholder="Kanal Publikasi..."><br/>
+
+                    <label for="link">Link</label>
+                    <input type="text" id="link" name="link" placeholder="Link..."><br/>
+
+                    <label for="insidental">Insidental</label><br>
+                    <input type="radio" id="insidental" name="insidental" onchange="showInsidental(this)" value="True">Iya<br/>
+                    <input type="radio" id="insidental" name="insidental" onchange="showInsidental(this)" value="False" checked>Tidak<br/><br/>
+
+                    <div id="bukti_insidental" style="display: none">
+                        <label for="bukti">Bukti Insidental</label>
+                        <input type="text" id="bukti" name="bukti" placeholder="Bukti Insidental..."><br/>
+                    </div>
+
+                    <button class="button" type="submit" value="postformpublikasi">Ajukan</button>
+                </form>
+            </section>
+        </div>
+        <object class="object only-desktop" data="{% static 'surat/svg/Envelope-pana.svg' %}" type="image/svg+xml"></object>
+    </div>
+
+    <script>
+        $('select option:first-child').attr("selected", "selected");
+    </script>
+{% endblock content %}
