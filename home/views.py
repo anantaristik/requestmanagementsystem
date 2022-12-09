@@ -9,3 +9,6 @@ def keuangan(request):
 
 def surat(request):
     return render(request, 'surat.html')
+
+def publikasi(request):
+    return render(request, 'publikasi.html')

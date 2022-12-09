@@ -26,7 +26,7 @@ ds = storage.bucket()
 # Create
 # --------------------------
 
-def create(request, judul_konten, id_feedback, deskripsi_kegiatan, kanal_publikasi, link, insidental):
+def publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kanal_publikasi, link, insidental):
     try:
         print(request.session['uid'])
         user_data = fauth.get_account_info(request.session['uid'])
@@ -58,8 +58,6 @@ def create(request, judul_konten, id_feedback, deskripsi_kegiatan, kanal_publika
 
     except:
         return "terjadi error"
-
-create("", "judul", "0", "deskripsi", ['instagram', 'twitter'], "link", True)
 
 # --------------------------
 # Read
