@@ -6,3 +6,6 @@ def index(request):
 
 def keuangan(request):
     return render(request, 'keuangan.html')
+
+def surat(request):
+    return render(request, 'surat.html')

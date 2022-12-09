@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
-from backend.crud.crud_user import user_create, user_read
+from backend.CRUD.crud_user import user_create, user_read
 from backend.misc import firebase_init
 from backend.constant.birdeptim import pi, birdeptim, kode_fungsionaris
 

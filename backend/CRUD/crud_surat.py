@@ -26,7 +26,7 @@ ds = storage.bucket()
 # Create
 # --------------------------
 
-def create(request, judul, nama_kegiatan, id_feedback, deskripsi, tipe_surat, link, insidental):
+def surat_create(request, judul, nama_kegiatan, id_feedback, deskripsi, tipe_surat, link, insidental):
     try:
         print(request.session['uid'])
         user_data = fauth.get_account_info(request.session['uid'])
