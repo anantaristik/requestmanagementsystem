@@ -87,7 +87,7 @@ def detail(request, id):
                         else:
                             admin = "false"
                         try:
-                            url = getPhoto.getPhoto(data_detail["token_dokumen"][0])
+                            url = getPhoto.getPhoto(data_detail["berkas"][0])
                             dokumen = url
                         except:
                             dokumen = ""

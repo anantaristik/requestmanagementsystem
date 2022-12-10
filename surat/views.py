@@ -45,7 +45,7 @@ def postFormSurat(request):
 # Detail Surat Keluar
 # --------------------
 def detail(request, id):
-    try:
+    # try:
         print("masuk")
         if (request.session['uid']):
             print("masuk1")
@@ -77,8 +77,8 @@ def detail(request, id):
                 return redirect("/user/logout")
         else:
             return redirect("/user/login")
-    except:
-        return redirect("/user/login")
+    # except:
+    #     return redirect("/user/login")
 
 
 def delete(request):

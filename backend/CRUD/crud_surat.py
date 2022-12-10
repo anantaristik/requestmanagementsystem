@@ -43,7 +43,7 @@ def surat_create(request, judul, nama_kegiatan, deskripsi, tipe_surat, link, ins
             'judul': judul,
             'deskripsi': deskripsi,
             'id_pemohon': id_pemohon,
-            'idFeedback': "",
+            'id_feedback': "",
             'jenis_surat': tipe_surat,
             'linkdocs': link,
             'waktu_pengajuan': datetime.datetime.now(pytz.timezone('Asia/Jakarta')),

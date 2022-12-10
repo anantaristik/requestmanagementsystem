@@ -312,6 +312,12 @@ hr {
         font-size: 1.5em;
         margin-bottom: 2em;
         }
+    .dokumen {
+        width: 80vw;
+        height: 80vh;
+        font-size: 1.5em;
+        margin-bottom: 2em;
+    }
 }
 
 

@@ -14,7 +14,7 @@
 				<h4>{{user.email}}</h4>
 				<p>{{user.nama}}</p>
 				<br>
-                <a class="button-sec logout" href="" style="color: #0b2e13">Logout</a>
+                <a class="button-sec logout" href="{% url 'user:logout' %}" style="color: #0b2e13">Logout</a>
 			</div>
 			<hr>
 			<div class="dashboard-nav-list">
@@ -130,7 +130,7 @@
                                         <div>
                                             <p class="request-div-body-status"></p>
                                             <p>Dipesan Oleh:</p>
-                                            <p><strong>{{ data.idPemohon }}</strong></p>
+                                            <p><strong>{{ data.id_pemohon }}</strong></p>
                                         </div>
                                         <div class="request-time-post-mobile">
                                             {% if data.waktu_pengajuan_str %}
