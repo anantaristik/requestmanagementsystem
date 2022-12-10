@@ -22,5 +22,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('user/', include(('user.urls', 'user'), namespace='user')),
     path('surat/', include(('surat.urls', 'surat'), namespace='surat')),
+    path('keuangan/', include(('reimbursement.urls', 'reimbursement'), namespace='reimbursement')),
+    path('upload-photo', include('backend.urls'))
     path('publikasi/', include(('publikasi.urls', 'publikasi'), namespace='publikasi')),
 ]

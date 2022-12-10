@@ -16,17 +16,7 @@ fauth = firebase_init
 # Form Request Surat Keluar
 # --------------------
 def formSurat(request):
-    try:
-        # if (request.session['uid']):
-        if (fauth.get_account_info(request.session['uid'])):
-            return render(request, 'form_surat.html', {
-                'links_surat': links_surat
-            })
-        else:
-            return redirect("/user/logout")
-    except:
-        return redirect("/user/login")
-
+    return render(request, 'form_surat.html')
 
 def postFormSurat(request):
     judul = request.POST.get("judul")
