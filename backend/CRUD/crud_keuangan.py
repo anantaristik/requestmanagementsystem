@@ -104,6 +104,16 @@ def reimbursement_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, ju
     except:
         return "error"
 
+
+def reimbursement_update_feedback(id_permohonan_rb, id_feedback):
+    try:
+        data = db.collection('InformasiPermohonan').document('keuangan')
+        data.collection('permohonanReimburse').document(id_permohonan_rb).update({
+            'id_feedback': id_feedback,
+    })
+        return ""
+    except:
+        return "error"
 # --------------------------
 # Delete
 # --------------------------

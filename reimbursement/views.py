@@ -102,3 +102,34 @@ def delete(request):
                 return redirect('user:logout')
     except:
         return redirect('user:signin')
+    data_detail = reimbursement_read(id)
+    user_session = fauth.get_account_info(request.session['uid'])
+    user = user_read(user_session['users'][0]['localId'])
+    if (data_detail != []):
+        data_photo = []
+        # Get Photos Bukti Pembayaran
+        for photo in data_detail['bukti_pembayaran']:
+            url = getPhoto.getPhoto(photo)
+            data_photo.append(url)
+        # Get Bukti Transfer
+        try:
+            url = getPhoto.getPhoto(data_detail['bukti_transfer'][0])
+            transfer = url
+        except:
+            transfer = ''
+        # Get Dokumen Files
+        try:
+            url = getPhoto.getPhoto(data_detail["berkas"][0])
+            dokumen = url
+        except:
+            dokumen = ""
+        print(data_detail)
+        print(data_photo)
+        return render(request, 'reimbursement_details.html', {
+            'data': data_detail,
+            'id': id,
+            'photos': data_photo,
+            'transfer': transfer,
+            'user': user,
+            'dokumen': dokumen
+        })

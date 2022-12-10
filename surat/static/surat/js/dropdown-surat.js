@@ -56,3 +56,12 @@ function showInsidental(s) {
         tag.style.display = "none"
     }
 }
+
+function showFeedback(s) {
+    var tag = document.getElementById('status_after');
+    if (s.value == "Diterima") {
+        tag.style.display = "block"
+    } else {
+        tag.style.display = "none"
+    }
+}

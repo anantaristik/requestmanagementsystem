@@ -12,7 +12,7 @@
         <div class="form-root">
             <h1 id="judul-form">Form Feedback</h1>
             <section>
-                <form action="postformfeedback" method="post" id="form">
+                <form action="../../postformfeedback" method="post" id="form">
                     {% csrf_token %}
                     <label for="judul" >Judul</label>
                     <input type="text" id="judul" name="judul" placeholder="Judul Permintaan..."> <br/>
@@ -21,21 +21,19 @@
                     <input type="text" id="komentar" name="komentar" placeholder="Komentar..."><br/>
 
                     <label for="status">Status</label><br>
-                    <input type="radio" id="status" name="status" onchange="showInsidental(this)" value="Diterima" checked>Diterima<br/>
-                    <input type="radio" id="status" name="status" onchange="showInsidental(this)" value="Revisi">Revisi<br/>
-                    <input type="radio" id="status" name="status" onchange="showInsidental(this)" value="Ditolak">Ditolak<br/><br/>
+                    <input type="radio" id="status" name="status" onchange="showFeedback(this)" value="Diterima">Diterima<br/>
+                    <input type="radio" id="status" name="status" onchange="showFeedback(this)" value="Revisi">Revisi<br/>
+                    <input type="radio" id="status" name="status" onchange="showFeedback(this)" value="Ditolak" checked >Ditolak<br/><br/>
 
-                    <div id="bukti_insidental" style="display: none">
-                        <label class="control-label">Upload Berkas</label>
-                        <div class="uppy" id="drag-drop-area"></div>
-                    </div>
+                    <label class="control-label">Upload Berkas</label>
+                    <div class="uppy" id="drag-drop-area"></div>
 
                     <div class="filler"></div>
 
                     <input name="uploadFiles" type="hidden">
 
-                    <input type="text" id="id" name="id" hidden value={{ id }}><br/>
-                    <input type="text" id="jenis" name="jenis" hidden value={{ jenis }}><br/>
+                    <input type="hidden" id="id" name="id"  value={{ id }}><br/>
+                    <input type="hidden" id="jenis" name="jenis"  value={{ jenis }}><br/>
 
                 </form>
 
