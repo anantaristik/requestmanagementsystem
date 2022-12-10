@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block meta %}
-<title>Dashboard Pengurus</title>
+<title>Dashboard</title>
 <link rel="stylesheet" href="{% static 'dashpengurus/css/dashboard.css' %}">
 {% endblock meta %}
 
 {% block content %}
 	<div class="content dashboard-content">
 		<div class="dashboard-nav">
-			<a class="dashboard-home" href="{% url 'dashboard_pengurus:dashboard_pengurus' 'home' %}"><h1>Dashboard Pengurus</h1></a>
+			<a class="dashboard-home" href="{% url 'dashboard:dashboard' 'home' %}"><h1>Dashboard</h1></a>
 			<div class="dashboard-nav-akun">
 				<h4>{{user.email}}</h4>
 				<p>{{user.nama}}</p>
@@ -25,7 +25,7 @@
 				</div>
 				<div class="dashboard-nav-list-item">
 					<br>
-					<a href="{% url 'dashboard_pengurus:dashboard_pengurus' 'dana' %}" class="nav-button"><p {% if 'dana' in request.get_full_path %}id="category-focus"{% endif %}> Dana</p></a>
+					<a href="{% url 'dashboard:dashboard' 'dana' %}" class="nav-button"><p {% if 'dana' in request.get_full_path %}id="category-focus"{% endif %}> Dana</p></a>
 				</div>
 				<hr>
             {% endif %}
@@ -36,7 +36,7 @@
 				</div>
 				<div class="dashboard-nav-list-item">
 					<br>
-					<a href="{% url 'dashboard_pengurus:dashboard_pengurus' 'surat' %}" class="nav-button"><p {% if 'surat' in request.get_full_path %}id="category-focus"{% endif %} >Surat Menyurat</p></a>
+					<a href="{% url 'dashboard:dashboard' 'surat' %}" class="nav-button"><p {% if 'surat' in request.get_full_path %}id="category-focus"{% endif %} >Surat Menyurat</p></a>
 				</div>
 				<hr>
             {% endif %}
@@ -47,7 +47,7 @@
 				</div>
 				<div class="dashboard-nav-list-item">
 					<br>
-					<a href="{% url 'dashboard_pengurus:dashboard_pengurus' 'publikasi' %}" class="nav-button"><p {% if 'publikasi' in request.get_full_path %}id="category-focus"{% endif %} >Publikasi</p></a>
+					<a href="{% url 'dashboard:dashboard' 'publikasi' %}" class="nav-button"><p {% if 'publikasi' in request.get_full_path %}id="category-focus"{% endif %} >Publikasi</p></a>
 				</div>
 				<hr>
             {% endif %}
@@ -62,7 +62,7 @@
                         <ul class="cards">
                             {% if 'dana' in user.admin %}
                             <li>
-                                <a href="{% url 'dashboard_pengurus:dashboard_pengurus' 'dana' %}" class="card">
+                                <a href="{% url 'dashboard:dashboard' 'dana' %}" class="card">
                                   <img src="{% static 'user/photos/Finance_leaders-pana.png' %}" class="card__image" alt="" />
                                   <div class="card__overlay">
                                     <div class="card__header">
@@ -78,7 +78,7 @@
                             {% endif %}
                             {% if 'surat' in user.admin %}
                             <li>
-                                <a href="{% url 'dashboard_pengurus:dashboard_pengurus' 'surat' %}" class="card">
+                                <a href="{% url 'dashboard:dashboard' 'surat' %}" class="card">
                                   <img src="{% static 'user/photos/Fill_out-bro.png' %}" class="card__image" alt="" />
                                   <div class="card__overlay">
                                     <div class="card__header">
@@ -94,7 +94,7 @@
                             {% endif %}
                             {% if 'publikasi' in user.admin %}
                                 <li>
-                                    <a href="{% url 'dashboard_pengurus:dashboard_pengurus' 'publikasi' %}" class="card">
+                                    <a href="{% url 'dashboard:dashboard' 'publikasi' %}" class="card">
                                       <img src="{% static 'user/photos/Fill_out-bro.png' %}" class="card__image" alt="" />
                                       <div class="card__overlay">
                                         <div class="card__header">

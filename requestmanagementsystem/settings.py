@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'reimbursement',
     'user',
     'publikasi',
-    'surat'
+    'surat',
+    'dashpengurus',
+    'dashboard'
 ]
 
 MIDDLEWARE = [

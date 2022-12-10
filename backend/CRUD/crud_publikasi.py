@@ -69,15 +69,11 @@ def publikasi_read(id_permohonan_rb):
     print(data)
     return data
 
-def publikasi_read_all(tahap):
+def publikasi_read_all():
     try:
         data_dict = []
-        if tahap == 'semua':
-            datas = db.collection('InformasiPermohonan').document('publikasi')
-            data.collection('permohonanPublikasi').where('tahapan', '!=', 3).get()
-        else:
-            datas = db.collection('InformasiPermohonan').document('publikasi')
-            data.collection('permohonanPublikasi').where('tahapan', '==', int(tahap)).get()
+        datas = db.collection('InformasiPermohonan').document('publikasi')
+        datas = datas.collection('permohonanPublikasi').get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
@@ -85,11 +81,11 @@ def publikasi_read_all(tahap):
         data_dict = []
     return data_dict
 
-def publikasi_read_all_line():
+def publikasi_read_requests(idPemohon):
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('publikasi')
-        data.collection('permohonanPublikasi').order_by('waktu_pengajuan').limit(10).get()
+        datas = datas.collection('permohonanPublikasi').where('idPemohon', '==', idPemohon).get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict

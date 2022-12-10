@@ -4,12 +4,12 @@ fauth = firebase_init
 from django.http import Http404
 from django.shortcuts import render, redirect
 
-from backend.CRUD.crud_publikasi import publikasi_read_all
-from backend.CRUD.crud_surat import surat_read_all
+from backend.CRUD.crud_publikasi import publikasi_read_requests
+from backend.CRUD.crud_surat import surat_read_requests
 
 from backend.CRUD.crud_user import user_read
 
-def dashboard_pengurus(request, category):
+def dashboard(request, category):
 	# try:
 	user_session = fauth.get_account_info(request.session['uid'])
 	if user_session:
@@ -20,10 +20,10 @@ def dashboard_pengurus(request, category):
 		judul = "Home Dashboard"
 		if user["admin"]:
 			if category == 'publikasi' and 'publikasi' in user['admin']:
-				data = publikasi_read_all()
+				data = publikasi_read_requests(user['id'])
 				judul = "Publikasi"
 			elif category == "surat" and 'surat' in user['admin']:
-				data = surat_read_all()
+				data = surat_read_requests(user['id'])
 				judul = "Surat Menyurat"
 			# elif category == "publikasi" and 'publikasi' in user['admin']:
 			# 	data = sb_read_all(sort)
@@ -39,7 +39,7 @@ def dashboard_pengurus(request, category):
 
 			# data.sort(key=extract_time, reverse=False)
 
-			return render(request, 'dashboard_pengurus.html', {
+			return render(request, 'dashboard.html', {
 				'datas': data,
 				'user': user,
 				'judul': judul,

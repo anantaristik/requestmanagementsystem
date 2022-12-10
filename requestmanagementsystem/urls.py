@@ -23,4 +23,7 @@ urlpatterns = [
     path('user/', include(('user.urls', 'user'), namespace='user')),
     path('surat/', include(('surat.urls', 'surat'), namespace='surat')),
     path('publikasi/', include(('publikasi.urls', 'publikasi'), namespace='publikasi')),
+    path('dashboard-pengurus/', include(('dashpengurus.urls', 'dashpengurus'), namespace='dashboard_pengurus')),
+    path('dashboard/', include(('dashboard.urls', 'dashboard'), namespace='dashboard')),
+
 ]

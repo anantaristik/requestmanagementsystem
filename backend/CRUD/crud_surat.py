@@ -70,27 +70,11 @@ def surat_read(id_permohonan_rb):
     print(data)
     return data
 
-def surat_read_all(tahap):
-    try:
-        data_dict = []
-        if tahap == 'semua':
-            datas = db.collection('InformasiPermohonan').document('surat')
-            data.collection('PermohonanSurat').where('tahapan', '!=', 3).get()
-        else:
-            datas = db.collection('InformasiPermohonan').document('surat')
-            data.collection('PermohonanSurat').where('tahapan', '==', int(tahap)).get()
-        for data in datas:
-            data_dict.append(data.to_dict())
-        return data_dict
-    except:
-        data_dict = []
-    return data_dict
-
-def surat_read_all_line():
+def surat_read_all():
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('surat')
-        data.collection('PermohonanSurat').order_by('waktu_pengajuan').limit(10).get()
+        datas = datas.collection('PermohonanSurat').get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
@@ -98,6 +82,17 @@ def surat_read_all_line():
         data_dict = []
     return data_dict
 
+def surat_read_requests(idPemohon):
+    try:
+        data_dict = []
+        datas = db.collection('InformasiPermohonan').document('surat')
+        datas = datas.collection('PermohonanSurat').where('idPemohon', '==', idPemohon).get()
+        for data in datas:
+            data_dict.append(data.to_dict())
+        return data_dict
+    except:
+        data_dict = []
+    return data_dict
 # --------------------------
 # Update
 # --------------------------
