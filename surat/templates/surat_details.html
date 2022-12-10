@@ -73,8 +73,6 @@
 		<h3>Link Docs</h3>
 		<a href="{{data.linkdocs}}">Docs Surat</a>
 	</div>
-
-	{% endif %}
     <div class="button-outer">
     {% if "surat" in user.admin and data.id_feedback == ''%}
         <a href="{% url 'feedback:formfeedback' id=id jenis='surat' %}" class="button">Masukkan Feedback</a>
