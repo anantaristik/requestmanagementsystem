@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Detail Reimbursement-{{data.judul}}</title>
+    <link rel="stylesheet" href="{% static 'reimbursement/css/style-details.css' %}">
+{% endblock meta %}
+
+{% block content %}
+    <div class="content-root">
+		<a href="{% url 'home:keuangan' %}" id="button-kembali">&lt Kembali</a>
+		<div class="details-judul">
+			<h2>{{data.judul}}</h2> <br>
+			<h2>({{data.id_permohonan_rb}})</h2>
+		</div>
+
+		<div class="details-info detail-only-desktop">
+			<h1>Data Pesanan</h1>
+			<br>
+			<div class="row">
+				<div class="column">
+					<h3>Pemohon</h3>
+					<p>{{data.id_pemohon}}</p>
+					<h3>Nama Kegiatan</h3>
+					<p>{{data.nama_kegiatan}}</p>
+					<h3>Deskripsi Kegiatan</h3>
+					<p>{{data.deskripsi_kegiatan}}</p>
+				</div>
+				<div class="column">
+					<h3>Nominal Reimbursement</h3>
+					<p class="currency">{{data.jumlah_dana}}</p>
+					<h3>Data Rekening</h3>
+					<p>{{data.atas_nama_rekening}}<br>{{data.nomor_rekening}}<br>{{data.bank}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="details-info only-mobile">
+			<h1>Data Pesanan</h1>
+			<br>
+			<h3>Pemohon</h3>
+			<p></p>
+			<h3>Nama Kegiatan</h3>
+			<p>{{data.nama_kegiatan}}</p>
+			<h3>Deskripsi Kegiatan</h3>
+			<p>{{data.deskripsi_kegiatan}}</p>
+			<h3>Nominal Reimbursement</h3>
+			<p class="currency">{{data.jumlah_dana}}</p>
+			<h3>Data Rekening</h3>
+			<p>{{data.atas_nama_rekening}}</p>
+			<p>{{data.nomor_rekening}}</p>
+			<h3>Voucher</h3>
+		</div>
+
+		<div class="bukti-pembayaran">
+			<h3>Bukti Pembayaran</h3>
+			{% for photo in photos %}
+			<img class="bukti-image" src='{{ photo }}'/>
+			<div class="modal">
+				<span class="close">&times;</span>
+				<img class="modal-content" src="{{photo}}">
+			</div>
+			{% endfor %}
+		</div>
+
+		{% if transfer != "" %}
+		<div class="transfer">
+			<h3>Bukti Transfer</h3>
+			<img class="bukti-image" src='{{ transfer }}'/>
+			<div class="modal">
+				<span class="close">&times;</span>
+				<img class="modal-content" src="{{transfer}}">
+			</div>
+		</div>
+		{% endif %}
+
+	
+	</div>
+    <script type="application/javascript" src="{% static 'reimbursement/js/scripts-details.js' %}"></script>
+	{% endblock content %}

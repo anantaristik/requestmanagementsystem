@@ -12,7 +12,7 @@
         <div class="form-root">
             <h1 id="judul-form">Form Pengajuan Reimbursement</h1>
             <section>
-                <form action="postformkr" method="post" id="form">
+                <form action="postForm" method="post" id="form">
                     {% csrf_token %}
                     <label for="judul" >Judul</label>
                     <input type="text" id="judul" name="judul" placeholder="Judul Permintaan..."> <br/>
@@ -21,24 +21,19 @@
                     <input type="text" id="kegiatan" name="nama_kegiatan" placeholder="Nama Kegiatan..."><br/>
 
                     <label for="deskripsi">Deskripsi Singkat Kegiatan</label>
-                    <input type="text" id="deskripsi" name="deskripsi" placeholder="Deksripsi Singkat..."><br/>
+                    <input type="text" id="deskripsi" name="deskripsi_kegiatan" placeholder="Deksripsi Singkat..."><br/>
 
                     <label for="rekening">Nomor Rekening</label>
-                    <input type="number" id="rekening" name="norek" placeholder="Nomor Rekening..."><br/>
+                    <input type="number" id="rekening" name="nomor_rekening" placeholder="Nomor Rekening..."><br/>
 
                     <label for="atas-nama">Atas Nama Rekening</label>
-                    <input type="text" id="atas-nama" name="anrek" placeholder="Atas Nama Rekening..."><br/>
+                    <input type="text" id="atas-nama" name="atas_nama_rekening" placeholder="Atas Nama Rekening..."><br/>
 
                     <label for="bank">Nama Bank Rekening</label>
                     <input type="text" id="bank" name="bank" placeholder="Nama bank rekening anda..."><br/>
 
-                    <a href="{{ template }}" target="_blank"><p>Template Voucher Penarikan Kas</p></a>
-
-                    <label for="link-docs">Link Docs Voucher Pengajuan</label>
-                    <input type="url" id="link-docs" name="link_voucher" placeholder="Link Docs Voucher..."><br/>
-
                     <label for="nominal">Nominal Reimburse</label>
-                    <input type="number" id="nominal" name="nominal" placeholder="Nominal Uang Reimburse..."><br/>
+                    <input type="number" id="nominal" name="jumlah_dana" placeholder="Nominal Uang Reimburse..."><br/>
 
                     <label class="control-label">Upload Bukti Pembayaran</label>
                     <div class="uppy" id="drag-drop-area"></div>
@@ -49,7 +44,7 @@
 
                 </form>
 
-                <button type="button" class="button" id="submitbutton">Ajukan</button>
+                <button type="button" class="button" id="submitbutton">Submit</button>
 
                 <div class="filler"></div>
 

@@ -3,8 +3,8 @@ import json
 from django.http import Http404
 from django.shortcuts import render, redirect
 from backend.CRUD.crud_user import user_read
-from backend.CRUD.crud_dana import *
-from backend.misc import firebase_init
+from backend.CRUD.crud_keuangan import *
+from backend.misc import firebase_init, getPhoto
 
 # Initialize Firebase Database
 fauth = firebase_init
@@ -13,9 +13,10 @@ fauth = firebase_init
 # Form Request Reimbursement
 # --------------------
 def form_reimbursement(request):
-    return render(request, 'reimbursement/form_reimbursement.html')
+    return render(request, 'form_reimbursement.html')
 
 def post_form_reimbursement(request):
+    judul = request.POST.get("judul")
     nama_kegiatan = request.POST.get("nama_kegiatan")
     deskripsi_kegiatan = request.POST.get("deskripsi_kegiatan")
     nama_bank = request.POST.get("nama_bank")
@@ -31,12 +32,38 @@ def post_form_reimbursement(request):
         photos_meta = []
         for i in photos[0]["successful"]:
             photos_meta.append(i["meta"]["id_firebase"])
-        message = reimbursement_create(request, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, nomor_rekening, atas_nama_rekening, nama_bank, photos_meta)
+        message = reimbursement_create(request, judul, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, nomor_rekening, atas_nama_rekening, nama_bank, photos_meta)
         if message != "terjadi error":
-            return redirect("/reimbursement/detail/" + message)
+            return redirect("/keuangan/detail/" + message)
         else:
             message = "Gagal Upload"
             return redirect('reimbursement:form_reimbursement')
     else:
         message = "Gagal Upload"
         return redirect('reimbursement:form_reimbursement')
+
+# ---------------------
+# Detail Reimbursement
+# --------------------
+def detail(request, id):
+    data_detail = reimbursement_read(id)
+    if (data_detail != []):
+        data_photo = []
+        # Get Photos Bukti Pembayaran
+        for photo in data_detail['bukti_pembayaran']:
+            url = getPhoto.getPhoto(photo)
+            data_photo.append(url)
+        # Get Bukti Transfer
+        try:
+            url = getPhoto.getPhoto(data_detail['bukti_transfer'][0])
+            transfer = url
+        except:
+            transfer = ''
+        print(data_detail)
+        print(data_photo)
+        return render(request, 'reimbursement_details.html', {
+            'data': data_detail,
+            'id': id,
+            'photos': data_photo,
+            'transfer': transfer
+        })

@@ -21,11 +21,11 @@ ds = storage.bucket()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def reimbursement_create(request, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, nomor_rekening, atas_nama_rekening, nama_bank, bukti_pembayaran):
+def reimbursement_create(request, judul, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, nomor_rekening, atas_nama_rekening, nama_bank, bukti_pembayaran):
     print(request.session['uid'])
     user_data = fauth.get_account_info(request.session['uid'])
     
-    uname = user_data['user'][0]['localId']
+    uname = user_data['users'][0]['localId']
     user_data = user_read(uname)['id']
 
     id_pemohon = user_data
@@ -33,6 +33,7 @@ def reimbursement_create(request, nama_kegiatan, deskripsi_kegiatan, jumlah_dana
     id_permohonan_rb = "rb-" + nama_kegiatan.replace(" ", "-").lower()
 
     data = {
+        'judul':judul,
         'id_permohonan_rb': id_permohonan_rb,
         'nama_kegiatan': nama_kegiatan,
         'deskripsi_kegiatan': deskripsi_kegiatan,
@@ -58,19 +59,15 @@ def reimbursement_create(request, nama_kegiatan, deskripsi_kegiatan, jumlah_dana
 # --------------------------
 def reimbursement_read(id_permohonan_rb):
     data = db.collection('InformasiPermohonan').document('keuangan')
-    data.collection('permohonanReimburse').document(id_permohonan_rb).get().to_dict()
+    data = data.collection('permohonanReimburse').document(id_permohonan_rb).get().to_dict()
     print(data)
     return data
 
-def reimbursement_read_all(tahap):
+def reimbursement_read_all():
     try:
         data_dict = []
-        if tahap == 'semua':
-            datas = db.collection('InformasiPermohonan').document('keuangan')
-            data.collection('permohonanReimburse').where('tahapan', '!=', 3).get()
-        else:
-            datas = db.collection('InformasiPermohonan').document('keuangan')
-            data.collection('permohonanReimburse').where('tahapan', '==', int(tahap)).get()
+        datas = db.collection('InformasiPermohonan').document('keuangan')
+        datas = data.collection('permohonanReimburse').get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
@@ -82,7 +79,7 @@ def reimbursement_read_all_line():
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('keuangan')
-        data.collection('permohonanReimburse').order_by('waktu_permintaan').limit(10).get()
+        datas = datas.collection('permohonanReimburse').order_by('waktu_permintaan').limit(10).get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
@@ -112,7 +109,7 @@ def reimbursement_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, ju
 def reimbursement_delete(id_permohonan_rb):
     try:
         data = db.collection('InformasiPermohonan').document('keuangan')
-        data.collection('permohonanReimburse').document(id_permohonan_rb).delete()
+        data = data.collection('permohonanReimburse').document(id_permohonan_rb).delete()
         return data
     except:
         return
