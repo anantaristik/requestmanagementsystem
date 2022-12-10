@@ -1,7 +1,7 @@
 import json
 
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from backend.CRUD.crud_publikasi import publikasi_create, publikasi_read,publikasi_delete
 from backend.CRUD.crud_user import user_read
 from backend.misc import firebase_init, getPhoto
@@ -108,7 +108,7 @@ def delete(request):
                     print(id_request)
                     data = publikasi_delete(id_request)
                     print(data)
-                    return redirect('../user/dashboard_pengurus/publikasi/semua')
+                    return redirect('home:publikasi')
             else:
                 return redirect('user:logout')
     except:

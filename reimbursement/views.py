@@ -13,7 +13,14 @@ fauth = firebase_init
 # Form Request Reimbursement
 # --------------------
 def form_reimbursement(request):
-    return render(request, 'form_reimbursement.html')
+    try:
+        if (request.session['uid']):
+            if (fauth.get_account_info(request.session['uid'])):
+                return render(request, 'form_reimbursement.html')
+            else:
+                return redirect("/user/logout")
+    except:
+        return redirect("/user/login")
 
 def post_form_reimbursement(request):
     judul = request.POST.get("judul")
@@ -46,24 +53,52 @@ def post_form_reimbursement(request):
 # Detail Reimbursement
 # --------------------
 def detail(request, id):
-    data_detail = reimbursement_read(id)
-    if (data_detail != []):
-        data_photo = []
-        # Get Photos Bukti Pembayaran
-        for photo in data_detail['bukti_pembayaran']:
-            url = getPhoto.getPhoto(photo)
-            data_photo.append(url)
-        # Get Bukti Transfer
-        try:
-            url = getPhoto.getPhoto(data_detail['bukti_transfer'][0])
-            transfer = url
-        except:
-            transfer = ''
-        print(data_detail)
-        print(data_photo)
-        return render(request, 'reimbursement_details.html', {
-            'data': data_detail,
-            'id': id,
-            'photos': data_photo,
-            'transfer': transfer
-        })
+    try:
+        if (request.session['uid']):
+            user_session = fauth.get_account_info(request.session['uid'])
+            if (user_session):
+                data_detail = reimbursement_read(id)
+                if (data_detail != []):
+                    data_photo = []
+                    # Get Photos Bukti Pembayaran
+                    for photo in data_detail['bukti_pembayaran']:
+                        url = getPhoto.getPhoto(photo)
+                        data_photo.append(url)
+                    # Get Bukti Transfer
+                    try:
+                        url = getPhoto.getPhoto(data_detail['bukti_transfer'][0])
+                        transfer = url
+                    except:
+                        transfer = ''
+                    print(data_detail)
+                    print(data_photo)
+                    return render(request, 'reimbursement_details.html', {
+                        'data': data_detail,
+                        'id': id,
+                        'photos': data_photo,
+                        'transfer': transfer
+                    })
+                else:
+                    return redirect("/user/logout")
+        else:
+            return redirect("/user/login")
+    except:
+        return redirect("/user/login")
+
+def delete(request):
+    try:
+        if (request.session['uid']):
+            user_session = fauth.get_account_info(request.session['uid'])
+            if (user_session):
+                user = user_read(user_session['users'][0]['localId'])
+                if ("keuangan" in user["admin"]):
+                    print('masuk')
+                    id_request = request.POST.get("id_request")
+                    print(id_request)
+                    data = reimbursement_delete(id_request)
+                    print(data)
+                    return redirect('home:publikasi')
+            else:
+                return redirect('user:logout')
+    except:
+        return redirect('user:signin')

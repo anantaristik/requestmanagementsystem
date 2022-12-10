@@ -8,7 +8,7 @@
     padding: 2em 4em 2em 4em;
 }
 
-.details-info p{
+.details-info p, .details-info a{
     line-height: 1.2em;
     margin-bottom: 2em;
 }
@@ -107,64 +107,6 @@ svg .white-text {
     fill: white;
 }
 
-/*Image Modal*/
-.bukti-pembayaran {
-    font-size: 1.5em;
-    margin-top: 2em;
-    justify-content: center;
-}
-
-.transfer {
-    font-size: 1.5em;
-    margin-top: 4em;
-}
-
-.bukti-image {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-    max-width: 15em;
-    margin: 0 0 1em 1em;
-}
-.voucher {
-    font-size: 1.5em;
-}
-
-.bukti-image:hover {opacity: 0.7;}
-
-.modal-content {
-    background-color: transparent;
-    border-color: transparent;
-    z-index: 100001;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-    width: 100vw;
-
-    margin-top: 20vh;
-}
-
-@keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
-}
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 /*Two Column*/
 
 .column {
@@ -186,64 +128,39 @@ svg .white-text {
     margin: 3em;
 }
 
-/* 100% Image Width on Smaller Screens */
-@media only screen and (min-width: 800px){
-  .content-root{
-      padding: 5em;
-      padding-top: 2em;
-      margin-left: 3em;
-      margin-right: 3em;
-      margin-top: 1em;
-      line-height: 1em;
-  }
-    .modal-content {
-        margin-top: 2em;
-        display: block;
-        width: 60vw;
-    }
-      .details-judul {
-          line-height: 1em;
-      }
-      .detail-only-desktop {
-        display: block;
-    }
-      .voucher {
-        width: 80vw;
-        height: 80vh;
-        font-size: 1.5em;
-        margin-bottom: 2em;
-        }
+.dokumen {
+    font-size: 1.5em;
 }
 
 /* Modal Delete */
 /* Float cancel and delete buttons and add an equal width */
 .cancelbtn, .deletebtn {
-  width: 40%;
-  border-radius: 10px;
+    width: 40%;
+    border-radius: 10px;
 }
 
 /* Add a color to the cancel button */
 .cancelbtn {
-background-color: #ccc;
-color: black;
+  background-color: #ccc;
+  color: black;
 }
 
 /* Add a color to the delete button */
 .deletebtn {
-background-color: #f44336;
+  background-color: #f44336;
 }
 
 .modal-button-del{
-color: white;
-padding: 14px 20px;
-margin: 8px 0;
-border: none;
-cursor: pointer;
-opacity: 0.9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 .modal-button-del:hover {
-opacity:1;
+  opacity:1;
 }
 
 /* Add padding and center-align text to the container */
@@ -274,4 +191,69 @@ opacity:1;
   width: 80%; /* Could be more or less, depending on screen size */
     border-radius: 10px;
 }
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.button-del {
+    margin-left: 85%;
+    display: inline;
+    cursor: pointer;
+}
+
+.button-del:hover {
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (min-width: 800px){
+    .content-root{
+        padding: 5em;
+        padding-top: 2em;
+        margin-left: 3em;
+        margin-right: 3em;
+        margin-top: 1em;
+        line-height: 1em;
+    }
+    .details-judul {
+        line-height: 1em;
+    }
+
+    .detail-only-desktop {
+        display: block;
+    }
+
+    .dokumen {
+        width: 80vw;
+        height: 80vh;
+        font-size: 1.5em;
+        margin-bottom: 2em;
+    }
+}
+
 

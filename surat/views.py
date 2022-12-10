@@ -16,7 +16,14 @@ fauth = firebase_init
 # Form Request Surat Keluar
 # --------------------
 def formSurat(request):
-    return render(request, 'form_surat.html')
+    try:
+        if (request.session['uid']):
+            if (fauth.get_account_info(request.session['uid'])):
+                return render(request, 'form_surat.html')
+            else:
+                return redirect("/user/logout")
+    except:
+        return redirect("/user/login")
 
 def postFormSurat(request):
     judul = request.POST.get("judul")
@@ -26,19 +33,12 @@ def postFormSurat(request):
     link = request.POST.get("linkdocs")
     insidental = request.POST.get("insidental")
 
-    if (insidental == "True"):
-        insidental = True
-        bukti = request.POST.get("bukti")
-    else:
-        insidental = False
-        bukti = ""
-
-    message = surat_create(request, judul, nama_kegiatan, deskripsi, jenis_surat, link, insidental, bukti)
+    message = surat_create(request, judul, nama_kegiatan, deskripsi, jenis_surat, link, insidental)
     print(message)
     if message != "terjadi error":
         return redirect("/surat/detail/" + message)
     else:
-        return redirect("user:logout")
+        return redirect("/user/logout")
 
 
 # ---------------------
@@ -52,33 +52,26 @@ def detail(request, id):
                 data_detail = surat_read(id)
                 user = user_read(user_session['users'][0]['localId'])
                 if (data_detail != []):
-                    if (user["id"] == data_detail["idPemohon"] or "surat" in user["admin"]):
+                    if (user["id"] == data_detail["id_pemohon"] or "surat" in user["admin"]):
                         # Get Dokumen Files
                         if ("surat" in user["admin"]):
                             admin = "true"
                         else:
                             admin = "false"
-                        try:
-                            url = getPhoto.getPhoto(data_detail["token_dokumen"][0])
-                            dokumen = url
-                        except:
-                            dokumen = ""
                         return render(request, 'surat_details.html', {
                             'data': data_detail,
                             'user': user,
                             'admin': admin,
                             'id': id,
-                            'dokumen': dokumen,
-                            'tahap': tahap_surat_keluar
                         })
                     else:
                         raise Http404
             else:
                 return redirect("/user/logout")
         else:
-            return redirect("/user/signin")
+            return redirect("/user/login")
     except:
-        return redirect("/user/signin")
+        return redirect("/user/login")
 
 
 def delete(request):
@@ -93,7 +86,7 @@ def delete(request):
                     print(id_request)
                     data = surat_delete(id_request)
                     print(data)
-                    return redirect('../user/dashboard_pengurus/surat/semua')
+                    return redirect('home:surat')
             else:
                 return redirect('user:logout')
     except:

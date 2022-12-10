@@ -29,7 +29,7 @@ def dashboard(request, category):
 				elif category == "surat" and 'surat' in user['admin']:
 					data = surat_read_requests(user['id'])
 					judul = "Surat Menyurat"
-				elif category == "dana" and 'dana' in user['admin']:
+				elif category == "keuangan" and 'keuangan' in user['admin']:
 					data = reimbursement_read_requests(user['id'])
 					judul = "Dana"
 				hostname = request.build_absolute_uri("/")
