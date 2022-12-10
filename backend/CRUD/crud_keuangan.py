@@ -34,7 +34,7 @@ def reimbursement_create(request, judul, nama_kegiatan, deskripsi_kegiatan, juml
 
     data = {
         'judul':judul,
-        'id_permohonan_rb': id_permohonan_rb,
+        'id_permintaan': id_permohonan_rb,
         'nama_kegiatan': nama_kegiatan,
         'deskripsi_kegiatan': deskripsi_kegiatan,
         'id_feedback': "",
@@ -45,7 +45,9 @@ def reimbursement_create(request, judul, nama_kegiatan, deskripsi_kegiatan, juml
         'nama_bank':nama_bank,
         'bukti_transaksi':[],
         'bukti_pembayaran':bukti_pembayaran,
-        'waktu_permintaan': datetime.datetime.now(pytz.timezone('Asia/Jakarta'))
+        'waktu_permintaan': datetime.datetime.now(pytz.timezone('Asia/Jakarta')),
+        'waktu_pengajuan_str': datetime.datetime.strftime(datetime.datetime.now(pytz.timezone('Asia/Jakarta')),
+                                                              "%d %b %Y, %H:%M"),
     }
 
     collections = db.collection('InformasiPermohonan').document('keuangan')
@@ -67,7 +69,7 @@ def reimbursement_read_all():
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('keuangan')
-        datas = data.collection('permohonanReimburse').get()
+        datas = datas.collection('permohonanReimburse').get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
@@ -75,18 +77,17 @@ def reimbursement_read_all():
         data_dict = []
     return data_dict
 
-def reimbursement_read_all_line():
+def reimbursement_read_requests(idPemohon):
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('keuangan')
-        datas = datas.collection('permohonanReimburse').order_by('waktu_permintaan').limit(10).get()
+        datas = datas.collection('permohonanReimburse').where('id_pemohon', '==', idPemohon).get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
     except:
         data_dict = []
     return data_dict
-
 # --------------------------
 # Update
 # --------------------------

@@ -38,10 +38,10 @@ def publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kan
 
         id_permohonan_pb = "pb-" + judul_konten.replace(" ", "-").lower()
         data = {
-            'idPermintaan': id_permohonan_pb,
-            'judul_konten': judul_konten,
+            'id_permintaan': id_permohonan_pb,
+            'judul': judul_konten,
             'deskripsi': deskripsi_kegiatan,
-            'idPemohon': id_pemohon,
+            'id_pemohon': id_pemohon,
             'idFeedback': id_feedback,
             'kanal_publikasi': kanal_publikasi,
             'tautan_konten': link,
@@ -85,7 +85,7 @@ def publikasi_read_requests(idPemohon):
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('publikasi')
-        datas = datas.collection('permohonanPublikasi').where('idPemohon', '==', idPemohon).get()
+        datas = datas.collection('permohonanPublikasi').where('id_pemohon', '==', idPemohon).get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict

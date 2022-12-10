@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>Form Feedback</title>
+    <link rel="stylesheet" href="{% static 'feedback/css/style.css' %}"/>
+    <link href="https://releases.transloadit.com/uppy/v2.9.4/uppy.min.css" rel="stylesheet"/>
+{% endblock meta %}
+
+{% block content %}
+    <div class="content-root">
+        <div class="form-root">
+            <h1 id="judul-form">Form Feedback</h1>
+            <section>
+                <form action="postformfeedback" method="post" id="form">
+                    {% csrf_token %}
+                    <label for="judul" >Judul</label>
+                    <input type="text" id="judul" name="judul" placeholder="Judul Permintaan..."> <br/>
+
+                    <label for="komentar" >Komentar</label>
+                    <input type="text" id="komentar" name="komentar" placeholder="Komentar..."><br/>
+
+                    <label for="status">Status</label><br>
+                    <input type="radio" id="status" name="status" onchange="showInsidental(this)" value="Diterima" checked>Diterima<br/>
+                    <input type="radio" id="status" name="status" onchange="showInsidental(this)" value="Revisi">Revisi<br/>
+                    <input type="radio" id="status" name="status" onchange="showInsidental(this)" value="Ditolak">Ditolak<br/><br/>
+
+                    <div id="bukti_insidental" style="display: none">
+                        <label class="control-label">Upload Berkas</label>
+                        <div class="uppy" id="drag-drop-area"></div>
+                    </div>
+
+                    <div class="filler"></div>
+
+                    <input name="uploadFiles" type="hidden">
+
+                    <input type="text" id="id" name="id" hidden value={{ id }}><br/>
+                    <input type="text" id="jenis" name="jenis" hidden value={{ jenis }}><br/>
+
+                </form>
+
+                <button type="button" class="button" id="submitbutton">Ajukan</button>
+
+                <div class="filler"></div>
+
+                <!-- Script upload ke Bukti Pembayaran-->
+                <script src="https://releases.transloadit.com/uppy/v2.9.4/uppy.min.js"></script>
+                <script>
+                    var uppy = new Uppy.Core()
+
+                    uppy.on('file-added', (file) => {
+                        uppy.setFileMeta(file.id, {
+                            id_firebase: "FEEDBACK/BERKAS/" + uuidv4(),
+                        })
+                    })
+                    uppy.use(Uppy.XHRUpload, {
+                        endpoint: '{% url "upload_photo" %}',
+                        headers: {'X-CSRFToken':"{{csrf_token}}"},
+                        formData: true,
+                        fieldName: 'file'
+                    })
+                    uppy.use(Uppy.Dashboard, {
+                        inline: true,
+                        target: '#drag-drop-area',
+                        proudlyDisplayPoweredByUppy:false,
+                        showProgressDetails:true,
+                        doneButtonHandler: null,
+                        hideUploadButton: true,
+                    })
+                    uppy.on('complete', (result) => {
+                        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+                    })
+                    uppy.use(Uppy.Form, {
+                        target: "#form",
+                        resultName: 'uploadFiles',
+                        getMetaFromForm: false,
+                        addResultToForm: true,
+                        submitOnSuccess: true,
+                        triggerUploadOnSubmit: false,
+                    })
+                </script>
+                <script type="application/javascript" src="{% static 'feedback/js/scripts.js' %}"></script>
+                <script src="https://releases.transloadit.com/uppy/v2.9.4/uppy.min.js"></script>
+            </section>
+        </div>
+    <object class="object only-desktop" data="{% static 'feedback/svg/Topup-credit-bro.svg' %}" type="image/svg+xml"></object>
+    </div>
+    <script>
+        $('select option:first-child').attr("selected", "selected");
+    </script>
+{% endblock content %}

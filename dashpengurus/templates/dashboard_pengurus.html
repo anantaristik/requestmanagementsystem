@@ -113,7 +113,7 @@
                     <h2>List Permintaan</h2>
                     <div class="dashboard-background">
                         {% for data in datas %}
-                            <a onclick="openInNewTab('{{ hostname }}{{ category }}/detail/{{ data.idPermintaan }}');" class="request" {% if data.isInsidental %} style="background: #8b0000" {% endif %}>
+                            <a onclick="openInNewTab('{{ hostname }}{{ category }}/detail/{{ data.id_permintaan }}');" class="request" {% if data.isInsidental %} style="background: #8b0000" {% endif %}>
                                 <div class="request-div">
                                     <div class="request-div-header">
                                         <h2>{{ data.judul }}</h2>

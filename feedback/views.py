@@ -2,7 +2,7 @@ import json
 
 from django.http import Http404
 from django.shortcuts import render, redirect
-from backend.CRUD.crud_publikasi import publikasi_create, publikasi_read,publikasi_delete
+from backend.CRUD.crud_feedback import feedback_create, feedback_read, feedback_delete
 from backend.CRUD.crud_user import user_read
 from backend.misc import firebase_init, getPhoto
 
@@ -11,45 +11,59 @@ fauth = firebase_init
 
 
 # ---------------------
-# Form Request Publikasi Keluar
+# Form Request Feedback
 # --------------------
-def formPublikasi(request):
+def formFeedback(request, id, jenis):
     try:
         if (request.session['uid']):
             print(1)
             if (fauth.get_account_info(request.session['uid'])):
                 print(2)
-                return render(request, 'form_publikasi.html')
+                return render(request, 'form_feedback.html', {
+                    'id': id,
+                    'jenis': jenis
+                })
             else:
                 return redirect("/user/logout")
     except:
         return redirect("/user/login")
 
 
-def postFormPublikasi(request):
-    judul_konten = request.POST.get("judul_konten")
-    deskripsi_kegiatan = request.POST.get("deskripsi_kegiatan")
-    kanal_publikasi = request.POST.get("kanal_publikasi")
-    link = request.POST.get("link")
-    insidental = request.POST.get("insidental")
-    id_feedback = ""
-    
-    if (insidental == "True"):
-        insidental = True
-    else:
-        insidental = False
-        bukti = ""
+def postFormFeedback(request):
+    berkas = request.POST.get("uploadFiles")
+    berkas = json.loads(berkas)
+    id_permohonan = request.POST.get("id")
+    status = request.POST.get("status")
+    komentar = request.POST.get("komentar")
+    jenis = request.POST.get("jenis")
 
-    message = publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kanal_publikasi, link, insidental)
+    try:
+        if berkas[0]["successful"]:
+            bukti_meta = []
+            bukti_meta.append(berkas[0]["successful"][0]["meta"]["id_firebase"])
+            message = feedback_create(request, id_permohonan, status, komentar, berkas, jenis)
+            if message != "terjadi error":
+                return redirect(jenis + "/detail/" + id_permohonan)
+            else:
+                message = "Gagal Upload"
+                return redirect(jenis +  "/detail/" + id_permohonan)
+        else:
+            message = "Gagal Upload"
+            return redirect(jenis + "/detail/" + id_permohonan)
+    except:
+        return redirect("/")
+
+    message = feedback_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kanal_feedback, link,
+                               insidental)
     print(message)
     if message != "terjadi error":
-        return redirect("/publikasi/detail/" + message)
+        return redirect("/feedback/detail/" + message)
     else:
         return redirect("user:logout")
 
 
 # ---------------------
-# Detail Publikasi Keluar
+# Detail Feedback
 # --------------------
 def detail(request, id):
     try:
@@ -59,7 +73,7 @@ def detail(request, id):
             print(1)
             if (user_session):
                 print(1)
-                data_detail = publikasi_read(id)
+                data_detail = feedback_read(id)
                 print(1)
                 user = user_read(user_session['users'][0]['localId'])
                 print(1)
@@ -67,10 +81,10 @@ def detail(request, id):
                 if (data_detail != []):
                     print(1)
                     print(data_detail)
-                    if (user["id"] == data_detail["id_pemohon"] or "publikasi" in user["admin"]):
+                    if (user["id"] == data_detail["id_pemohon"] or user["admin"]):
                         print(1)
                         # Get Dokumen Files
-                        if ("publikasi" in user["admin"]):
+                        if (user["admin"]):
                             admin = "true"
                         else:
                             admin = "false"
@@ -79,7 +93,7 @@ def detail(request, id):
                             dokumen = url
                         except:
                             dokumen = ""
-                        return render(request, 'publikasi_details.html', {
+                        return render(request, 'feedback_details.html', {
                             'data': data_detail,
                             'user': user,
                             'admin': admin,
@@ -102,13 +116,13 @@ def delete(request):
             user_session = fauth.get_account_info(request.session['uid'])
             if (user_session):
                 user = user_read(user_session['users'][0]['localId'])
-                if ("publikasi" in user["admin"]):
+                if (user["admin"]):
                     print('masuk')
                     id_request = request.POST.get("id_request")
                     print(id_request)
-                    data = publikasi_delete(id_request)
+                    data = feedback_delete(id_request)
                     print(data)
-                    return redirect('../user/dashboard_pengurus/publikasi/semua')
+                    return redirect('../user/dashboard_pengurus/feedback/semua')
             else:
                 return redirect('user:logout')
     except:

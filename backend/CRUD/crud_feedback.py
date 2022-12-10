@@ -25,13 +25,11 @@ ds = storage.bucket()
 # --------------------------
 # CRUD Functions
 # --------------------------
-def fb_create(request, id_permohonan, status, komentar, berkas, id_pengurus, jenis_permohonan):
+def feedback_create(request, id_permohonan, status, komentar, berkas, jenis_permohonan):
     try:
         print(request.session['uid'])
-        # user_data = fauth.get_account_info(request.session['uid'])
-        # id_user = user_data['users'][0]['localId']
-        # user_data2 = user_read(idUser)
-        # nama_user = user_data2['nama']
+        user_data = fauth.get_account_info(request.session['uid'])
+        id_pengurus = user_data['users'][0]['localId']
         id_feedback = "fb-" + id_permohonan
         data = {
             'id_feedback': id_feedback,
@@ -51,7 +49,7 @@ def fb_create(request, id_permohonan, status, komentar, berkas, id_pengurus, jen
     except:
         return "terjadi error"
 
-def fb_read(id):
+def feedback_read(id):
     try:
         data = db.collection('feedback').document(id).get().to_dict()
         return data
@@ -59,7 +57,7 @@ def fb_read(id):
         data = []
     return data
 
-def fb_delete(id):
+def feedback_delete(id):
     try:
         data = db.collection('feedback').document(id).delete()
         return data
@@ -70,7 +68,7 @@ def fb_delete(id):
 # Update data per-data
 # --------------------
 
-def fb_update_status(request, id, status):
+def feedback_update_status(request, id, status):
     try:
         db.collection('feedback').document(id).update({
             "status": status,
@@ -79,7 +77,7 @@ def fb_update_status(request, id, status):
     except:
         return "terjadi error"
 
-def fb_update_berkas(request, id, berkas):
+def feedback_update_berkas(request, id, berkas):
     try:
         db.collection('feedback').document(id).update({
             "berkas": berkas,
@@ -88,7 +86,7 @@ def fb_update_berkas(request, id, berkas):
     except:
         return "terjadi error"
 
-def fb_update_komentar(request, id, komentar):
+def feedback_update_komentar(request, id, komentar):
     try:
         data = db.collection('feedback').document(id).get().to_dict()
         data['komentar'] = data['komentar'].append(komentar)

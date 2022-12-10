@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'publikasi',
     'surat',
     'dashpengurus',
-    'dashboard'
+    'dashboard',
+    'feedback'
 ]
 
 MIDDLEWARE = [

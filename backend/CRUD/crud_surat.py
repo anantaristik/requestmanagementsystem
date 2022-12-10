@@ -38,11 +38,11 @@ def surat_create(request, judul, nama_kegiatan, id_feedback, deskripsi, tipe_sur
 
         id_permohonan_sr = "sr-" + nama_kegiatan.replace(" ", "-").lower()
         data = {
-            'idPermintaan': id_permohonan_sr,
+            'id_permintaan': id_permohonan_sr,
             'nama_kegiatan': nama_kegiatan,
             'judul': judul,
             'deskripsi': deskripsi,
-            'idPemohon': id_pemohon,
+            'id_pemohon': id_pemohon,
             'idFeedback': id_feedback,
             'jenis_surat': tipe_surat,
             'link_docs': link,
@@ -86,7 +86,7 @@ def surat_read_requests(idPemohon):
     try:
         data_dict = []
         datas = db.collection('InformasiPermohonan').document('surat')
-        datas = datas.collection('PermohonanSurat').where('idPemohon', '==', idPemohon).get()
+        datas = datas.collection('PermohonanSurat').where('id_pemohon', '==', idPemohon).get()
         for data in datas:
             data_dict.append(data.to_dict())
         return data_dict
