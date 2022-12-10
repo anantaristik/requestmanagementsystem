@@ -91,9 +91,9 @@ def detail(request, id):
             else:
                 return redirect("/user/logout")
         else:
-            return redirect("/user/signin")
+            return redirect("/user/login")
     except:
-        return redirect("/user/signin")
+        return redirect("/user/login")
 
 
 def delete(request):
