@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block meta %}
-    <title>Form Surat Menyurat</title>
+    <title>Form Publikasi</title>
     <link rel="stylesheet" href="{% static 'surat/css/style.css' %}"/>
 {% endblock meta %}
 
 {% block content %}
     <div class="content-root">
         <div class="form-root">
-            <h1 id="judul-form">Form Pengajuan Surat Menyurat</h1>
+            <h1 id="judul-form">Form Pengajuan Publikasi</h1>
             <section>
                 <form action="postformpublikasi" method="post" id="form">
                     {% csrf_token %}
@@ -28,11 +28,6 @@
                     <label for="insidental">Insidental</label><br>
                     <input type="radio" id="insidental" name="insidental" onchange="showInsidental(this)" value="True">Iya<br/>
                     <input type="radio" id="insidental" name="insidental" onchange="showInsidental(this)" value="False" checked>Tidak<br/><br/>
-
-                    <div id="bukti_insidental" style="display: none">
-                        <label for="bukti">Bukti Insidental</label>
-                        <input type="text" id="bukti" name="bukti" placeholder="Bukti Insidental..."><br/>
-                    </div>
 
                     <button class="button" type="submit" value="postformpublikasi">Ajukan</button>
                 </form>

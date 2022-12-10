@@ -26,12 +26,12 @@ ds = storage.bucket()
 # Create
 # --------------------------
 
-def surat_create(request, judul, nama_kegiatan, id_feedback, deskripsi, tipe_surat, link, insidental):
+def surat_create(request, judul, nama_kegiatan, deskripsi, tipe_surat, link, insidental):
     try:
         print(request.session['uid'])
         user_data = fauth.get_account_info(request.session['uid'])
     
-        uname = user_data['user'][0]['localId']
+        uname = user_data['users'][0]['localId']
         user_data = user_read(uname)['id']
 
         id_pemohon = user_data
@@ -43,9 +43,9 @@ def surat_create(request, judul, nama_kegiatan, id_feedback, deskripsi, tipe_sur
             'judul': judul,
             'deskripsi': deskripsi,
             'id_pemohon': id_pemohon,
-            'idFeedback': id_feedback,
+            'idFeedback': "",
             'jenis_surat': tipe_surat,
-            'link_docs': link,
+            'linkdocs': link,
             'waktu_pengajuan': datetime.datetime.now(pytz.timezone('Asia/Jakarta')),
             'waktu_pengajuan_str': datetime.datetime.strftime(datetime.datetime.now(pytz.timezone('Asia/Jakarta')),
                                                               "%d %b %Y, %H:%M"),
@@ -66,7 +66,7 @@ def surat_create(request, judul, nama_kegiatan, id_feedback, deskripsi, tipe_sur
 
 def surat_read(id_permohonan_rb):
     data = db.collection('InformasiPermohonan').document('surat')
-    data.collection('PermohonanSurat').document(id_permohonan_rb).get().to_dict()
+    data = data.collection('PermohonanSurat').document(id_permohonan_rb).get().to_dict()
     print(data)
     return data
 
@@ -99,10 +99,9 @@ def surat_read_requests(idPemohon):
 def surat_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, jumlah_dana, insidental):
     try:
         data = db.collection('InformasiPermohonan').document('surat')
-        data.collection('PermohonanSurat').document(id_permohonan_rb).update({
+        data = data.collection('PermohonanSurat').document(id_permohonan_rb).update({
             'nama_kegiatan': nama_kegiatan,
             'deskripsi_kegiatan': deskripsi_kegiatan,
-            'jumlah_dana': jumlah_dana,
             'insidental': insidental,
     })
         return ""
@@ -125,7 +124,7 @@ def surat_update_feedback(id_permohonan, id_feedback):
 def surat_delete(id_permohonan_rb):
     try:
         data = db.collection('InformasiPermohonan').document('surat')
-        data.collection('PermohonanSurat').document(id_permohonan_rb).delete()
+        data = data.collection('PermohonanSurat').document(id_permohonan_rb).delete()
         return data
     except:
         return

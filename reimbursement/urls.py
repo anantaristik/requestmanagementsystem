@@ -6,5 +6,6 @@ app_name = 'reimbursement'
 urlpatterns = [
     path('form', form_reimbursement, name='form_reimbursement'),
     path('postForm', post_form_reimbursement, name='post_form_reimbursement'),
-    path('detail/<str:id>', detail, name='detail')
+    path('detail/<str:id>', detail, name='detail'),
+    path('delete', delete, name='delete')
 ]
