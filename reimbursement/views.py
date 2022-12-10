@@ -47,6 +47,8 @@ def post_form_reimbursement(request):
 # --------------------
 def detail(request, id):
     data_detail = reimbursement_read(id)
+    user_session = fauth.get_account_info(request.session['uid'])
+    user = user_read(user_session['users'][0]['localId'])
     if (data_detail != []):
         data_photo = []
         # Get Photos Bukti Pembayaran
@@ -59,11 +61,19 @@ def detail(request, id):
             transfer = url
         except:
             transfer = ''
+        # Get Dokumen Files
+        try:
+            url = getPhoto.getPhoto(data_detail["berkas"][0])
+            dokumen = url
+        except:
+            dokumen = ""
         print(data_detail)
         print(data_photo)
         return render(request, 'reimbursement_details.html', {
             'data': data_detail,
             'id': id,
             'photos': data_photo,
-            'transfer': transfer
+            'transfer': transfer,
+            'user': user,
+            'dokumen': dokumen
         })

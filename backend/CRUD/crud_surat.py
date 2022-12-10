@@ -109,6 +109,16 @@ def surat_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, jumlah_dan
     except:
         return "error"
 
+def surat_update_feedback(id_permohonan, id_feedback):
+    try:
+        data = db.collection('InformasiPermohonan').document('surat')
+        data.collection('PermohonanSurat').document(id_permohonan).update({
+            'id_feedback': id_feedback,
+    })
+        return ""
+    except:
+        return "error"
+
 # --------------------------
 # Delete
 # --------------------------

@@ -42,7 +42,7 @@ def publikasi_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kan
             'judul': judul_konten,
             'deskripsi': deskripsi_kegiatan,
             'id_pemohon': id_pemohon,
-            'idFeedback': id_feedback,
+            'id_feedback': id_feedback,
             'kanal_publikasi': kanal_publikasi,
             'tautan_konten': link,
             'waktu_pengajuan': datetime.datetime.now(pytz.timezone('Asia/Jakarta')),
@@ -109,6 +109,16 @@ def publikasi_update(id_permohonan_rb, nama_kegiatan, deskripsi_kegiatan, jumlah
     except:
         return "error"
 
+
+def publikasi_update_feedback(id_permohonan, id_feedback):
+    try:
+        data = db.collection('InformasiPermohonan').document('publikasi')
+        data.collection('permohonanPublikasi').document(id_permohonan).update({
+            'id_feedback': id_feedback,
+    })
+        return ""
+    except:
+        return "error"
 # --------------------------
 # Delete
 # --------------------------

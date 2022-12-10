@@ -26,9 +26,9 @@ def dashboard_pengurus(request, category):
 				elif category == "surat" and 'surat' in user['admin']:
 					data = surat_read_all()
 					judul = "Surat Menyurat"
-				elif category == "dana" and 'dana' in user['admin']:
+				elif category == "keuangan" and 'keuangan' in user['admin']:
 					data = reimbursement_read_all()
-					judul = "Dana"
+					judul = "Keuangan"
 				hostname = request.build_absolute_uri("/")
 				print(request.get_full_path)
 				#

@@ -115,6 +115,14 @@
 		<embed src="{{dokumen}}" class="dokumen"/>
 	</div>
 	{% endif %}
+
+    <div class="button-outer">
+    {% if "publikasi" in user.admin and data.id_feedback == ''%}
+        <a href="{% url 'feedback:formfeedback' id=id jenis='publikasi' %}" class="button">Masukkan Feedback</a>
+    {% elif data.id_feedback != '' %}
+        <a href="{% url 'feedback:detail' id=data.id_feedback %}" class="button">Lihat Feedback</a>
+    {% endif %}
+    </div>
 </div>
     <script type="application/javascript" src="{% static 'publikasi/js/scripts-details.js' %}"></script>
 {% endblock content %}

@@ -41,20 +41,18 @@ def postFormFeedback(request):
         if berkas[0]["successful"]:
             bukti_meta = []
             bukti_meta.append(berkas[0]["successful"][0]["meta"]["id_firebase"])
-            message = feedback_create(request, id_permohonan, status, komentar, berkas, jenis)
+            message = feedback_create(request, id_permohonan, status, komentar, bukti_meta, jenis)
             if message != "terjadi error":
-                return redirect(jenis + "/detail/" + id_permohonan)
+                return redirect("/" + jenis + "/detail/" + id_permohonan)
             else:
                 message = "Gagal Upload"
-                return redirect(jenis +  "/detail/" + id_permohonan)
+                return redirect("/" + jenis + "/detail/" + id_permohonan)
         else:
             message = "Gagal Upload"
-            return redirect(jenis + "/detail/" + id_permohonan)
+            return redirect("/" + jenis + "/detail/" + id_permohonan)
     except:
         return redirect("/")
 
-    message = feedback_create(request, judul_konten, id_feedback, deskripsi_kegiatan, kanal_feedback, link,
-                               insidental)
     print(message)
     if message != "terjadi error":
         return redirect("/feedback/detail/" + message)
@@ -66,13 +64,13 @@ def postFormFeedback(request):
 # Detail Feedback
 # --------------------
 def detail(request, id):
-    try:
+    # try:
         if (request.session['uid']):
             print(1)
             user_session = fauth.get_account_info(request.session['uid'])
             print(1)
             if (user_session):
-                print(1)
+                print(id)
                 data_detail = feedback_read(id)
                 print(1)
                 user = user_read(user_session['users'][0]['localId'])
@@ -81,7 +79,7 @@ def detail(request, id):
                 if (data_detail != []):
                     print(1)
                     print(data_detail)
-                    if (user["id"] == data_detail["id_pemohon"] or user["admin"]):
+                    if (user["id"] == data_detail["id_pengurus"] or user["admin"]):
                         print(1)
                         # Get Dokumen Files
                         if (user["admin"]):
@@ -105,9 +103,9 @@ def detail(request, id):
             else:
                 return redirect("/user/logout")
         else:
-            return redirect("/user/signin")
-    except:
-        return redirect("/user/signin")
+            return redirect("/user/login")
+    # except:
+    #     return redirect("/user/login")
 
 
 def delete(request):
@@ -126,4 +124,4 @@ def delete(request):
             else:
                 return redirect('user:logout')
     except:
-        return redirect('user:signin')
+        return redirect('user:login')

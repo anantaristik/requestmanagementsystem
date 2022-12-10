@@ -6,6 +6,10 @@ from backend.misc import firebase_init
 import datetime
 import pytz
 
+from ..CRUD.crud_keuangan import reimbursement_update_feedback
+from ..CRUD.crud_surat import surat_update_feedback
+from ..CRUD.crud_publikasi import publikasi_update_feedback
+
 
 # --------------------------
 # Initialize Firebase Admin
@@ -42,9 +46,13 @@ def feedback_create(request, id_permohonan, status, komentar, berkas, jenis_perm
         }
         db.collection('feedback').document(id_feedback).set(data)
 
-        data = db.collection(jenis_permohonan).document(id_permohonan).get().to_dict()
-        data['id_feedback'] = id_feedback
-        db.collection(jenis_permohonan).document(id_permohonan).set(data)
+        if jenis_permohonan == "keuangan":
+            reimbursement_update_feedback(id_permohonan, id_feedback)
+        elif jenis_permohonan == "publikasi":
+            publikasi_update_feedback(id_permohonan, id_feedback)
+        elif jenis_permohonan == "surat":
+            surat_update_feedback(id_permohonan, id_feedback)
+
         return id_feedback
     except:
         return "terjadi error"

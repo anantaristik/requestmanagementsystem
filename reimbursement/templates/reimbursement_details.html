@@ -73,6 +73,14 @@
 		</div>
 		{% endif %}
 
+        <div class="button-outer">
+        {% if "keuangan" in user.admin and data.id_feedback == ''%}
+            <a href="{% url 'feedback:formfeedback' id=id jenis='keuangan' %}" class="button">Masukkan Feedback</a>
+        {% elif data.id_feedback != '' %}
+            <a href="{% url 'feedback:detail' id=data.id_feedback %}" class="button">Lihat Feedback</a>
+        {% endif %}
+		</div>
+
 	
 	</div>
     <script type="application/javascript" src="{% static 'reimbursement/js/scripts-details.js' %}"></script>
