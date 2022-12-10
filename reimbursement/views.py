@@ -58,7 +58,14 @@ def detail(request, id):
             user_session = fauth.get_account_info(request.session['uid'])
             if (user_session):
                 data_detail = reimbursement_read(id)
+                user = user_read(user_session['users'][0]['localId'])
                 if (data_detail != []):
+                    if (user["id"] == data_detail["id_pemohon"] or "keuangan" in user["admin"]):
+                        # Get Dokumen Files
+                        if ("keuangan" in user["admin"]):
+                            admin = "true"
+                        else:
+                            admin = "false"
                     data_photo = []
                     # Get Photos Bukti Pembayaran
                     for photo in data_detail['bukti_pembayaran']:
@@ -75,6 +82,7 @@ def detail(request, id):
                     return render(request, 'reimbursement_details.html', {
                         'data': data_detail,
                         'id': id,
+                        'admin':admin,
                         'photos': data_photo,
                         'transfer': transfer
                     })

@@ -46,15 +46,21 @@ def postFormSurat(request):
 # --------------------
 def detail(request, id):
     try:
+        print("masuk")
         if (request.session['uid']):
+            print("masuk1")
             user_session = fauth.get_account_info(request.session['uid'])
             if (user_session):
+                print("masuk2")
                 data_detail = surat_read(id)
                 user = user_read(user_session['users'][0]['localId'])
                 if (data_detail != []):
+                    print("masuk3")
                     if (user["id"] == data_detail["id_pemohon"] or "surat" in user["admin"]):
+                        print("masuk4")
                         # Get Dokumen Files
                         if ("surat" in user["admin"]):
+                            print("masuk5")
                             admin = "true"
                         else:
                             admin = "false"
