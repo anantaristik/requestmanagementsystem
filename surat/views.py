@@ -64,6 +64,7 @@ def detail(request, id):
                             admin = "true"
                         else:
                             admin = "false"
+                        print("mssuk6")
                         return render(request, 'surat_details.html', {
                             'data': data_detail,
                             'user': user,
