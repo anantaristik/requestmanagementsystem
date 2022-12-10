@@ -24,4 +24,5 @@ urlpatterns = [
     path('surat/', include(('surat.urls', 'surat'), namespace='surat')),
     path('keuangan/', include(('reimbursement.urls', 'reimbursement'), namespace='reimbursement')),
     path('upload-photo', include('backend.urls'))
+    path('publikasi/', include(('publikasi.urls', 'publikasi'), namespace='publikasi')),
 ]
