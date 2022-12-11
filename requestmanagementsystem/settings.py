@@ -33,6 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['requestmanagementsystem-production.up.railway.app']
 
+CSRF_TRUSTED_ORIGINS = ['https://requestmanagementsystem-production.up.railway.app']
+
 if not PRODUCTION:
     DEBUG = True
     ALLOWED_HOSTS += ['.localhost', '127.0.0.1', '[::1]']
